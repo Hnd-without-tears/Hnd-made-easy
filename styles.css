@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --primary-color: #0e1db0;
+  --primary-sidebar: #141739;
+  --primary-color-light: #4890e9;
+  --secondary-color: #fac402;
+  --tetiary-color: #fcb721;
+  --text-color: #fcfcfc;
+
+  --description: 1.3rem;
+}
+
+body {
+  font-family: josefin sans;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ////////////SIDEBAR PANELL CONTROL///////////// */
+
+img {
+  width: 3rem;
+  height: 3rem;
+}
+a {
+  text-decoration: none;
+  list-style-type: none;
+  text-decoration: none;
+  color: var(--text-color);
+  line-height: 1.5;
+  font-size: 1.2rem;
+}
+/* span {
+  margin-left: 1rem;
+} */
+li {
+  list-style-type: none;
+}
+button {
+  width: 21.3rem;
+  color: var(--text-color);
+  font-size: 1.3rem;
+  border-radius: 1.5rem;
+  padding: 0.9rem;
+  text-align: center;
+  border: 1px solid var(--primary-color);
+  outline: none;
+  background-color: var(--tetiary-color);
+}
+button {
+  width: 21.3rem;
+  color: var(--text-color);
+
+  border-radius: 1.5rem;
+  padding: 0.9rem;
+  text-align: center;
+
+  outline: none;
+}
+.parts {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* BELOW  NAV BAR STYLES */
+
+/* PANEL CONTROL */
+.sidebar {
+  background-color: #00163f;
+  color: var(--text-color);
+  width: 19vw;
+  gap: 1rem;
+  height: 69rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 2rem 2rem 0;
+}
+.element {
+  padding: 0.5rem 0;
+  width: 14rem;
+  transition: 0.7s;
+}
+.element:hover {
+  background-color: #4890e9;
+  border-radius: 0.6rem;
+}
+.element :global(.action) {
+  background-color: #4890e9;
+}
+.logobox {
+  display: flex;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+  justify-items: center;
+}
+.logo {
+  font-size: 1.7rem;
+  display: flex;
+  margin-left: 1rem;
+  align-items: center;
+  color: var(--text-color);
+  font-weight: 800;
+}
+/* PANEL DATA */
+.data {
+  width: 80vw;
+}
+.action {
+  margin-left: 1.4rem;
+}
+.panel {
+  width: 20vw;
+  height: 100vh;
+}
+.tabletopic {
+  margin-bottom: 1rem;
+}
+/* /////////////ADD QUESTIONS PAGE////////// */
+input {
+  outline-color: var(--primary-color);
+}
+.allcourse {
+  display: flex;
+}
+
+.addquestion {
+  width: 70vw;
+  margin: 0 auto;
+}
+.tabletopics {
+  color: var(--title-color);
+  font-weight: 800;
+  font-size: 2rem;
+  margin: 0;
+  /* margin-left: 5rem; */
+}
+.info {
+  margin: 0;
+  font-size: 1.2rem;
+}
+.info::after {
+  content: "";
+  width: 90%;
+  height: 1rem;
+  display: block;
+  left: 1rem;
+}
+.name {
+  margin: 0;
+  font-size: 1rem;
+  top: 7.2rem;
+  margin-left: 0.7rem;
+
+  padding: 0 0.3rem;
+  position: absolute;
+  background-color: var(--text-color);
+}
+.nam {
+  font-size: 1rem;
+  top: 12.8rem;
+
+  margin-left: 0.7rem;
+  padding: 0 0.3rem;
+  position: absolute;
+  background-color: var(--text-color);
+}
+.upload {
+  gap: 3rem;
+}
+.okay {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-weight: 700;
+  border: 0.1rem solid var(--primary-color);
+  outline: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 0.7rem 1.7rem;
+  border-radius: 0.4rem;
+}
+.papername {
+  /* margin-right: 2rem; */
+  margin-bottom: 2rem;
+  width: 17rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-right: 10rem;
+}
+.papernam {
+  /* margin-right: 2rem; */
+  margin-bottom: 2rem;
+  width: 18.3rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-right: 10rem;
+}
+.namput {
+  width: 17.3rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: #a0c9ff;
+  color: var(--text-color);
+}
+
+.direction {
+  margin-left: 4.6rem;
+}
+.coursetable {
+  width: 70vw;
+
+  height: max-content;
+  margin-left: 4.7rem;
+}
+.coursetablecontent {
+  display: flex;
+  column-gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.dropdown {
+  font-size: 2rem;
+}
+.heading {
+  justify-content: space-between;
+  line-height: 1.5;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.coursedetails {
+  width: 100vw;
+}
+.tabletopics {
+  color: var(--title-color);
+  font-weight: 700;
+  font-size: var(--title-size);
+  /* margin-left: 5rem; */
+}
+.content {
+  background-color: #f3f4ff;
+  width: 30vw;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  line-height: 0.8;
+  border-radius: 0.6rem;
+}
+
+.title {
+  color: var(--title-color);
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 700;
+}
+.papers {
+  font-weight: lighter;
+  color: #141739;
+}
+.viewcourse {
+  color: #00163f;
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem;
+  float: right;
+  transition: 0.8s;
+}
+.viewcourse:hover {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+}
+
+span.grey {
+  color: grey;
+}
+.direction {
+  margin-left: 4.6rem;
+}
+.coursetable {
+  width: 70vw;
+
+  height: max-content;
+}
+.coursetablecontent {
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  column-gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.dropdown {
+  font-size: 2rem;
+}
+.heading {
+  justify-content: space-between;
+  line-height: 1.5;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.coursedetails {
+  width: 100vw;
+}
+.tabletopics {
+  color: var(--title-color);
+  font-weight: 800;
+  font-size: 2rem;
+  /* margin-left: 5rem; */
+}
+.tabletopic {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.content {
+  background-color: #f3f4ff;
+  width: 30vw;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.8;
+  border-radius: 0.6rem;
+}
+
+.title {
+  color: var(--title-color);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+.papers {
+  font-weight: lighter;
+  color: #141739;
+}
+.viewcourse {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  transition: 0.5s;
+}
+.viewcourse:hover {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.3rem;
+}
+.crs {
+  gap: 1rem;
+  width: 100%;
+}
+/* ///////////////QUESTION PAPER STYLES////////// */
+
+.addquestion {
+  width: 70vw;
+  /* margin: 0 auto; */
+}
+.controlbox {
+  display: flex;
+
+  margin-top: 3rem;
+  gap: 8rem;
+  align-self: center;
+  line-height: 0;
+}
+.controlheading {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-top: 0.9rem;
+}
+.papername {
+  width: 20rem;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  outline: var(--primary-color);
+}
+.papernam {
+  /* margin-right: 2rem; */
+  padding: 0.4rem 1rem;
+  width: 7.3rem;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  /* height: 1.6rem; */
+}
+.papericon {
+  color: red;
+  font-size: 2rem;
+  line-height: 2.5;
+  margin-right: 1.5rem;
+  /* background-color: red; */
+}
+.paper {
+  display: flex;
+}
