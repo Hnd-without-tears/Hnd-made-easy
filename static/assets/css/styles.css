@@ -126,7 +126,7 @@ button {
 input {
   outline-color: var(--primary-color);
 }
-.allcourse {
+.allcourses {
   display: flex;
 }
 
