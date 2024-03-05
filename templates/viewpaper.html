@@ -1,106 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% load static %} 
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="allcourse">
-      <section>
-        <div class="panel">
-          <div class="sidebar">
-            <div class="logobox">
-              <img src="./assets/favicon.png" alt="Quizy" />
-              <span class="logo">Quizy</span>
-            </div>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="dashboard.html">Dashboard</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Addquestion.html">Upload question</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Courses.html">Add courses</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Mycourses.html">View courses</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="viewpaper.html">View Papers</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Subscription.html">subscription</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Myplan.html">Renew plan</a> </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Profile.html">Profile</a> </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Signout.html">SignOut</a> </span>
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/assets/css/styles.css" />
+  <title>Document</title>
+</head>
+<body>
+  <div class="allcourse">
+    <section>
+      <div class="panel">
+        <div class="sidebar">
+          <div class="logobox">
+            <img src="/static/assets/favicon.png" alt="Quizy" />
+            <span class="logo">Quizy</span>
           </div>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"
+              ><a href="dashboard.html">Dashboard</a>
+            </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"
+              ><a href="Addquestion.html">Upload question</a>
+            </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"
+              ><a href="Courses.html">Add courses</a>
+            </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"
+              ><a href="Mycourses.html">View courses</a>
+            </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"
+              ><a href="viewpaper.html">View Papers</a>
+            </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"
+              ><a href="Subscription.html">subscription</a>
+            </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Myplan.html">Renew plan</a> </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Profile.html">Profile</a> </span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Signout.html">SignOut</a> </span>
+          </li>
         </div>
-      </section>
-      <section class="parts">
-        <div class="coursedetails">
-          <div class="direction">
-            <h4>Home/papers/<span>department</span></h4>
-          </div>
-          <div class="coursetable">
-            <div class="heading">
-              <span class="tabletopics">Past Questions</span>
-              <div>
-                <span>Sort By</span>
-                <span class="dropdown">&rsaquo;</span>
-              </div>
+      </div>
+    </section>
+    <section class="parts">
+      <div class="coursedetails">
+        <div class="direction">
+          <h4>Home/papers/<span>department</span></h4>
+        </div>
+        <div class="coursetable">
+          <div class="heading">
+            <span class="tabletopics">Past Questions</span>
+            <div>
+              <span>Sort By</span>
+              <span class="dropdown">&rsaquo;</span>
             </div>
-          
-            {% for department, questions in questions_by_department.items %}
-            <span class="tabletopic">{{ department }}</span>
-            <div class="flex crs">
-              {% for question in questions %}
-              <div class="coursetablecontent">
-                <div class="content">
-                  <p class="title">{{ question.course }}</p>
-                  <a href="{{ question.file.url }}" class="viewcourse">
-                    View
-                    <span>&rarr;</span>
-                  </a>
-                </div>
+          </div>
+        
+          {% for course, papers in papers_by_course.items %}
+          <span class="tabletopic">{{ course }}</span>
+          <div class="flex crs">
+            {% for paper in papers %}
+            <div class="coursetablecontent">
+              <div class="content">
+                <p class="title">{{ paper.title }}</p>
+                <a href="{{ paper.file.url }}" class="viewcourse">
+                  View
+                  <span>&rarr;</span>
+                </a>
               </div>
-              {% endfor %}
             </div>
             {% endfor %}
           </div>
-          
+          {% endfor %}
         </div>
-      </section>
-    </div>
-  </body>
+        
+      </div>
+    </section>
+  </div>
+</body>
 </html>

@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <title>Payment Confirmation</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    /* Loader styles */
+    .loader {
+      border: 8px solid #f3f3f3; /* Light grey */
+      border-top: 8px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,16 +32,29 @@
             <h4 class="mb-0">Payment Confirmation</h4>
           </div>
           <div class="card-body">
-            <p class="lead">Thank you for choosing the <strong>{{ plan }}</strong> plan!</p>
-            <p class="lead">Your payment has been successfully processed.</p>
-            <p class="lead">Amount Paid: <strong>{{ amount }} XAF</strong></p>
-            <p class="lead">Additional Charges: <strong>250 XAF</strong></p>
-            <p class="lead">Total Payment: <strong>{{ amount + 250 }} XAF</strong></p>
-            <p class="lead">Dial: <strong>*126*1#</strong></p>
+            <div id="loader" class="loader"></div> <!-- Loader -->
+            <div id="payment-success" style="display: none;">
+              <p class="lead">Thank you for choosing the <strong>{{ plan }}</strong> plan!</p>
+              <p class="lead">Your payment has been successfully processed.</p>
+              <p class="lead">Amount Paid: <strong>{{ amount }} XAF</strong></p>
+              <p class="lead">Additional Charges: <strong>250 XAF</strong></p>
+              <p class="lead">Total Payment: <strong>{{ amount + 250 }} XAF</strong></p>
+              <p class="lead">Dial: <strong>*126*1#</strong></p>
+              <a href="/login" class="mt-6 bg-indigo-500 text-gray-100 w-full py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out focus:outline-none">Login</a>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    // Wait for 30 seconds before showing payment success
+    setTimeout(function() {
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('payment-success').style.display = 'block';
+    }, 3000); // 30 seconds
+  </script>
 </body>
 </html>

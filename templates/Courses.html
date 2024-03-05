@@ -1,75 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="allcourses">
-      <section>
-        <div class="panel">
-          <div class="sidebar">
-            <div class="logobox">
-              <img src="./assets/favicon.png" alt="Quizy" />
-              <span class="logo">Quizy</span>
-            </div>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="dashboard.html">Dashboard</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Addquestion.html">Upload question</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Courses.html">Add courses</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Mycourses.html">View courses</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="viewpaper.html">View Papers</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Subscription.html">subscription</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Myplan.html">Renew plan</a> </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Profile.html">Profile</a> </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Signout.html">SignOut</a> </span>
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Document</title>
+</head>
+<body>
+  <div class="allcourses">
+    <section>
+      <div class="panel">
+        <div class="sidebar">
+          <div class="logobox">
+            <img src="./assets/favicon.png" alt="Quizy" />
+            <span class="logo">Quizy</span>
           </div>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="dashboard.html">Dashboard</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Addquestion.html">Upload question</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Courses.html">Add courses</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Mycourses.html">View courses</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="viewpaper.html">View Papers</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Subscription.html">subscription</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Myplan.html">Renew plan</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Profile.html">Profile</a></span>
+          </li>
+          <li class="element">
+            <span>😂</span>
+            <span class="action"><a href="Signout.html">SignOut</a></span>
+          </li>
         </div>
-      </section>
-      <section>
-        
-      </section>
-    </div>
-  </body>
+      </div>
+    </section>
+    <section>
+      <h1>All Courses</h1>
+
+      {% if courses_data %}
+      <ul>
+        {% for course in courses_data %}
+        <li>
+          <strong>{{ course.name }}</strong> - {{ course.department }} - {{ course.description }}
+          <form action="/courses/delete/{{ course._id }}" method="post" style="display: inline;">
+            <button type="submit">Delete</button>
+          </form>
+          <a href="/courses/{{ course._id }}">Edit</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>No courses available.</p>
+      {% endif %}
+
+      <hr>
+
+      <h2>Create New Course</h2>
+      <form method="POST">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.name.label }}:
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.department_id.label }}:
+            {{ form.department_id(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label }}:
+            {{ form.description(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    </section>
+  </div>
+</body>
 </html>
