@@ -1,106 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="allcourse">
-      <section>
-        <div class="panel">
-          <div class="sidebar">
-            <div class="logobox">
-              <img src="./assets/favicon.png" alt="Quizy" />
-              <span class="logo">Quizy</span>
-            </div>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="dashboard.html">Dashboard</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Addquestion.html">Upload question</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Courses.html">Add courses</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Mycourses.html">View courses</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="viewpaper.html">View Papers</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"
-                ><a href="Subscription.html">subscription</a>
-              </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Myplan.html">Renew plan</a> </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Profile.html">Profile</a> </span>
-            </li>
-            <li class="element">
-              <span>😂</span>
-              <span class="action"><a href="Signout.html">SignOut</a> </span>
-            </li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-7gNlLCfv8ZcIlg8RsdVW9t3N+mqdX+ZLx9l6fVGxOM8aGFnPCWzJ5SxLeI6iZ00rW9SdL6aO+WX44Hs5h7e9Pw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Document</title>
+</head>
+<body>
+  <div class="allcourse">
+    <section>
+      <div class="panel">
+        <div class="sidebar">
+          <div class="logobox">
+            <img src="./assets/favicon.png" alt="Quizy" />
+            <span class="logo">Quizy</span>
           </div>
+          <li class="element">
+            <span><i class="fas fa-chart-line"></i></span>
+            <span class="action"><a href="dashboard.html">Dashboard</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-upload"></i></span>
+            <span class="action"><a href="Addquestion.html">Upload question</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-plus"></i></span>
+            <span class="action"><a href="Courses.html">Add courses</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-eye"></i></span>
+            <span class="action"><a href="Mycourses.html">View courses</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-file-alt"></i></span>
+            <span class="action"><a href="viewpaper.html">View Papers</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-list-alt"></i></span>
+            <span class="action"><a href="Subscription.html">subscription</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-redo"></i></span>
+            <span class="action"><a href="Myplan.html">Renew plan</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-user"></i></span>
+            <span class="action"><a href="Profile.html">Profile</a></span>
+          </li>
+          <li class="element">
+            <span><i class="fas fa-sign-out-alt"></i></span>
+            <span class="action"><a href="Signout.html">SignOut</a></span>
+          </li>
         </div>
-      </section>
-     <section>
-        <h1>All Departments</h1>
+      </div>
+    </section>
+   <section>
+      <h1>All Departments</h1>
 
-    {% if departments %}
-        <ul>
-            {% for department in departments %}
-                <li>{{ department.name }} - {{ department.school }} - {{ department.description }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No departments available.</p>
-    {% endif %}
+      {% if departments %}
+      <ul>
+          {% for department in departments %}
+              <li>{{ department.name }} - {{ department.school }} - {{ department.description }}</li>
+          {% endfor %}
+      </ul>
+      {% else %}
+      <p>No departments available.</p>
+      {% endif %}
 
-    <hr>
+      <hr>
 
-    <h2>Create New Department</h2>
-    <form method="POST">
-        {{ form.csrf_token }}
-        <div class="form-group">
-            {{ form.name.label }}:
-            {{ form.name(class="form-control") }}
-        </div>
-        <div class="form-group">
-            {{ form.school_id.label }}:
-            {{ form.school_id(class="form-control") }}
-        </div>
-        <div class="form-group">
-            {{ form.description.label }}:
-            {{ form.description(class="form-control") }}
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    
-     </section>
-    </div>
-  </body>
+      <h2>Create New Department</h2>
+      <form method="POST">
+          {{ form.csrf_token }}
+          <div class="form-group">
+              {{ form.name.label }}:
+              {{ form.name(class="form-control") }}
+          </div>
+          <div class="form-group">
+              {{ form.school_id.label }}:
+              {{ form.school_id(class="form-control") }}
+          </div>
+          <div class="form-group">
+              {{ form.description.label }}:
+              {{ form.description(class="form-control") }}
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+   </section>
+  </div>
+</body>
 </html>

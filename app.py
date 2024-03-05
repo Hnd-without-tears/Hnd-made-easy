@@ -105,7 +105,7 @@ def index():
         if user_data:
             user = User(**user_data)
             return render_template('quizzy.html', user=user)
-    return redirect('/login')
+    return render_template('quizzy.html', user=user)
 
 
 @app.route('/admin/login', methods=['GET', 'POST'])
@@ -197,12 +197,11 @@ def login():
         user_data = db.users.find_one({'email': email, 'password': password})
         
         if user_data:
-            # Create a User object using the retrieved data
-            user = User(**user_data)
             session['user_id'] = str(user_data['_id'])
+            flash('Login successful!', 'success')
             return redirect('/')
         else:
-            return 'Invalid credentials'
+            flash('Invalid email or password', 'error')
 
     return render_template('Login.html', form=form)
 
@@ -394,4 +393,4 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8100, debug=True)
