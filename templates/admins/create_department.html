@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content -->
+</head>
+<body>
+    <!-- Your navigation and other content -->
+
+    <div class="create-department-form">
+        <h2>Create Department</h2>
+        <form action="/create-department" method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.name.label }} {{ form.name }}
+            </div>
+            <div>
+                {{ form.school_id.label }} {{ form.school_id }}
+            </div>
+            <div>
+                {{ form.description.label }} {{ form.description }}
+            </div>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+</body>
+</html>

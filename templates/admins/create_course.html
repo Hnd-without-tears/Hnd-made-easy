@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content -->
+</head>
+<body>
+    <!-- Your navigation and other content -->
+
+    <div class="create-course-form">
+        <h2>Create Course</h2>
+        <form action="/create-course" method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.name.label }} {{ form.name }}
+            </div>
+            <div>
+                {{ form.department_id.label }} {{ form.department_id }}
+            </div>
+            <div>
+                {{ form.description.label }} {{ form.description }}
+            </div>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+</body>
+</html>

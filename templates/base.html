@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your App Title{% endblock %}</title>
+    <!-- Add your CSS links and other head elements here -->
+</head>
+<body>
+    <!-- Header section -->
+    <header>
+        <!-- Navigation bar goes here -->
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content section -->
+    <main>
+        <!-- Content from child templates will be inserted here -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+    <!-- Add your JavaScript links and other footer elements here -->
+</body>
+</html>

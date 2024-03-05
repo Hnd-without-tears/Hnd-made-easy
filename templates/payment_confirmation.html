@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Confirmation</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">Payment Confirmation</h4>
+          </div>
+          <div class="card-body">
+            <p class="lead">Thank you for choosing the <strong>{{ plan }}</strong> plan!</p>
+            <p class="lead">Your payment has been successfully processed.</p>
+            <p class="lead">Amount Paid: <strong>{{ amount }} XAF</strong></p>
+            <p class="lead">Additional Charges: <strong>250 XAF</strong></p>
+            <p class="lead">Total Payment: <strong>{{ amount + 250 }} XAF</strong></p>
+            <p class="lead">Dial: <strong>*126*1#</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

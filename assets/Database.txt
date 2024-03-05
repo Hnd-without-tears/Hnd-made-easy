@@ -1,0 +1,27 @@
+Schools:
+- _id: ObjectId (Primary Key)
+- name: String
+- description: String
+- created_at: Date
+
+Departments:
+- _id: ObjectId (Primary Key)
+- name: String
+- school_id: ObjectId (Foreign Key referencing Schools)
+- description: String
+- created_at: Date
+
+Courses:
+- _id: ObjectId (Primary Key)
+- name: String
+- department_id: ObjectId (Foreign Key referencing Departments)
+- description: String
+- created_at: Date
+
+Questions:
+- _id: ObjectId (Primary Key)
+- course_id: ObjectId (Foreign Key referencing Courses)
+- question_text: String
+- options: Array of Strings
+- correct_option: String
+- created_at: Date
