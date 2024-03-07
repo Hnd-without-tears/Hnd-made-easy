@@ -28,7 +28,7 @@ courses_collection = db["courses"]
 exams_collection = db["exams"]
 grades_collection = db["grades"]
 notes_collection = db["notes"]
-questions_collection = db["questions"] 
+# questions_collection = db["questions"] 
 papers_collection = db["papers"]
 # Configuration for file upload
 UPLOAD_FOLDER = 'uploads'
@@ -118,10 +118,6 @@ def index():
 
     return render_template('quizzy.html', user=user, num_questions_answered=num_questions_answered,
                            courses=courses, exams=exams, grades=grades, notes=notes)
-
-
-
-
 
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
@@ -368,7 +364,12 @@ def get_course_details(course_id):
 
 @app.route('/courses')
 def courses():
-    courses = db.courses.find()  # Fetch all courses from the database
+    courses = db.courses.find() 
+    courses = list(db.courses.find())  # Fetch all courses from the "courses" collection
+    for course in courses:
+        # Count the number of papers for each course
+        course['num_papers'] = db.questions.count_documents({'course_id': course['_id']})
+ # Fetch all courses from the database
     return render_template('Courses.html', courses=courses)
 
 # @app.route('/questions/<course_id>')
@@ -402,6 +403,29 @@ def get_papers_for_course(course_id):
 @app.route('/404')
 def notfound():
     return render_template('404_temp.html')
+
+@app.route('/profile')
+def profile():
+    user_id = session.get('user_id')
+    user = None
+    if user_id:
+        user_data = db.users.find_one({'_id': ObjectId(user_id)})
+        if user_data:
+            # Check if 'email' field is present in user_data
+            if 'email' in user_data:
+                user = User(**user_data)
+            else:
+                # If 'email' is missing, handle the situation accordingly (e.g., redirect to login)
+                return redirect(url_for('login'))
+
+    num_questions_answered = 10  # Replace with your logic to calculate the number of questions answered
+    courses = list(db["courses"].find())  # Fetch all courses from the "courses" collection
+    exams = list(db["exams"].find())  # Fetch all exams from the "exams" collection
+    grades = list(db["grades"].find())  # Fetch all grades from the "grades" collection
+    notes = list(db["notes"].find())  # Fetch all notes from the "notes" collection
+
+    return render_template('Profile.html', user=user, num_questions_answered=num_questions_answered,
+                           courses=courses, exams=exams, grades=grades, notes=notes)
 
 @app.route('/logout')
 def logout():
