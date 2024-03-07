@@ -92,7 +92,7 @@ button {
 }
 .element {
   padding: 0.5rem 0;
-  width: 14rem;
+  width: 13rem;
   transition: 0.7s;
 }
 .element:hover {
