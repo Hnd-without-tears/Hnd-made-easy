@@ -139,7 +139,7 @@ li:hover ul.dropdown {
   margin-left: 1.4rem;
 }
 .panel {
-  width: 20vw;
+  /* width: 20vw; */
   height: 100vh;
 }
 .tabletopic {
@@ -445,4 +445,11 @@ span.grey {
 .answered-questions {
   font-weight: bold;
   font-size: 18px;
+}
+/* /* ////////My courses ////////// */
+.my-enrolled-courses{
+  width: 100%;
+}
+.enrolled{
+  width: 100%;
 }

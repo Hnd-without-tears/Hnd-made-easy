@@ -111,11 +111,11 @@
           </div>
       </div>
   </section>
-    <section class="my-courses">
+    <section class="my-enrolled-courses">
       <h1>Courses</h1>
-    <ul>
+    <ul class="enrolled">
         {% for course in courses %}
-        <li><a href="{{ url_for('questions', course_id=course['_id']) }}">{{ course['name'] }}</a></li>
+        <li class="enrolled-course"><a href="{{ url_for('questions', course_id=course['_id']) }}">{{ course['name'] }}</a></li>
         {% endfor %}
     </ul>
       </section>
