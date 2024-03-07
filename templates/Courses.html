@@ -153,21 +153,14 @@
   </section>
     <section>
       <h1>Courses</h1>
-    {% if session.get('course_added') %}
-        <p>Course added successfully!</p>
-        {% set _ = session.pop('course_added', None) %}
-    {% endif %}
-    
-    <ul>
-        {% for course in courses %}
-            <li>
-                <h2>{{ course.name }}</h2>
-                <p>{{ course.description }}</p>
-                <a href="{{ url_for('view_course', course_id=str(course._id)) }}">View Course</a>
-                <a href="{{ url_for('upload_paper', course_id=str(course._id)) }}">Upload Paper</a>
-            </li>
-        {% endfor %}
-    </ul>
+      <ul>
+          {% for course in courses %}
+          <li>
+              <a href="{{ url_for('view_course', course_id=str(course._id)) }}">{{ course.name }}</a>
+              <p>{{ course.description }}</p>
+          </li>
+          {% endfor %}
+      </ul>
       </section>
     </div>
   </body>

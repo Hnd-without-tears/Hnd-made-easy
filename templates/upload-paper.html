@@ -113,15 +113,14 @@
       </div>
   </section>
     <section>
-      <div class="paper-upload">
         <h1>Upload Paper</h1>
-        <form action="{{ url_for('upload_paper', course_id=course_id) }}" method="POST" enctype="multipart/form-data">
-            <label for="paper">Select a PDF file:</label>
-            <input type="file" name="paper" id="paper" accept=".pdf" required>
-            <br>
-            <input type="submit" value="Upload">
+        <form action="{{ url_for('upload_paper') }}" method="POST" enctype="multipart/form-data">
+            <label for="course_id">Course ID:</label><br>
+            <input type="text" id="course_id" name="course_id"><br>
+            <label for="paper">Select a paper to upload:</label><br>
+            <input type="file" id="paper" name="paper" accept=".pdf"><br>
+            <input type="submit" value="Submit">
         </form>
-      </div>
     </section>
   </div>
 </body>
