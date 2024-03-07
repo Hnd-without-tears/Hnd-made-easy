@@ -64,6 +64,9 @@ button {
 
   outline: none;
 }
+.hundred{
+  width: 100%;
+}
 .parts {
   width: 100%;
 }
@@ -246,11 +249,10 @@ input {
 }
 .coursetable {
   width: 70vw;
-
   height: max-content;
   margin: 0 auto;
-  position: absolute;
-  top: 16px;
+  /* position: absolute;
+  top: 16px; */
 }
 .coursetablecontent {
   display: block;
