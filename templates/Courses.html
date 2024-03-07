@@ -78,46 +78,54 @@
       <section>
         <div class="panel">
           <div class="sidebar">
-              <div class="logobox">
-                  <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
-                  <span class="logo">Quizy</span>
-              </div>
-              <li class="element">
-                  <i class="fas fa-tachometer-alt"></i>
-                  <span class="action"><a href="/">Dashboard</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-upload"></i>
-                  <span class="action"><a href="/upload-paper">Upload question</a></span>
-              </li>
-            
-              <li class="element">
-                  <i class="fas fa-eye"></i>
-                  <span class="action"><a href="/courses">View courses</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-file-alt"></i>
-                  <span class="action"><a href="/404">View Papers</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-clock"></i>
-                  <span class="action"><a href="/payment-page">Subscription</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-sync-alt"></i>
-                  <span class="action"><a href="/404">Renew plan</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-user"></i>
-                  <span class="action"><a href="/404">Profile</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span class="action"><a href="Signout.html">Sign Out</a></span>
-              </li>
+            <div class="logobox">
+              <img
+                src="{{ url_for('static', filename='assets/favicon.png') }}"
+                alt="Quizy"
+              />
+              <span class="logo">Quizy</span>
+            </div>
+            <li class="element">
+              <i class="fas fa-tachometer-alt"></i>
+              <span class="action"><a href="/">Dashboard</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-upload"></i>
+              <span class="action"
+                ><a href="/upload-paper">Upload question</a></span
+              >
+            </li>
+
+            <li class="element">
+              <i class="fas fa-eye"></i>
+              <span class="action"><a href="/courses">View courses</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-file-alt"></i>
+              <span class="action"><a href="/404">View Papers</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-clock"></i>
+              <span class="action"
+                ><a href="/payment-page">Subscription</a></span
+              >
+            </li>
+            <li class="element">
+              <i class="fas fa-sync-alt"></i>
+              <span class="action"><a href="/404">Renew plan</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-user"></i>
+              <span class="action"><a href="/404">Profile</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="action"><a href="Signout.html">Sign Out</a></span>
+            </li>
           </div>
         </div>
       </section>
+<<<<<<< HEAD
       <section class="my-enrolled-courses">
         <div class =" first-sec">
           <h1 class="courses-color">Courses</h1>
@@ -158,6 +166,32 @@
           </li>
           {% endfor %}
         </ul>
+=======
+      <section class="hundred">
+        <div class="coursetable">
+          <div class="heading">
+            <span class="tabletopics">My Courses</span>
+            <div>
+              <span>Sort By</span>
+              <span class="dropdown">&rsaquo;</span>
+            </div>
+          </div>
+          <div class="coursetablecontent">
+            {% for course in courses %}
+            <div class="content">
+              <p class="title">{{ course.name }}</p>
+              <p class="papers">{{ course.num_papers }} papers</p>
+              <a
+                href="{{ url_for('papers', course_id=course['_id']) }}"
+                class="viewcourse"
+              >
+                Continue <span>&rarr;</span>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+>>>>>>> 892b33812d3e36ed45b43272e98ca5a256ef3b75
       </section>
     </div>
   </body>

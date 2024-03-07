@@ -70,59 +70,55 @@
 <body>
   <div class="allcourse">
     <section>
-      <div class="panel">
-          <div class="sidebar">
-              <div class="logobox">
-                  <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
-                  <span class="logo">Quizy</span>
-              </div>
-              <li class="element">
-                  <i class="fas fa-tachometer-alt"></i>
-                  <span class="action"><a href="/">Dashboard</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-upload"></i>
-                  <span class="action"><a href="/upload-paper">Upload question</a></span>
-              </li>
-            
-              <li class="element">
-                  <i class="fas fa-eye"></i>
-                  <span class="action"><a href="/courses">View courses</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-file-alt"></i>
-                  <span class="action"><a href="/404">View Papers</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-clock"></i>
-                  <span class="action"><a href="/payment-page">Subscription</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-sync-alt"></i>
-                  <span class="action"><a href="/404">Renew plan</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-user"></i>
-                  <span class="action"><a href="/404">Profile</a></span>
-              </li>
-              <li class="element">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span class="action"><a href="Signout.html">Sign Out</a></span>
-              </li>
-          </div>
-      </div>
-  </section>
+        <div class="panel">
+            <div class="sidebar">
+                <div class="logobox">
+                    <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
+                    <span class="logo">Quizy</span>
+                </div>
+                <li class="element">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="action"><a href="/">Dashboard</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-upload"></i>
+                    <span class="action"><a href="/upload-paper">Upload question</a></span>
+                </li>
+              
+                <li class="element">
+                    <i class="fas fa-eye"></i>
+                    <span class="action"><a href="/courses">View courses</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="action"><a href="/404">View Papers</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-clock"></i>
+                    <span class="action"><a href="/payment-page">Subscription</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-sync-alt"></i>
+                    <span class="action"><a href="/404">Renew plan</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-user"></i>
+                    <span class="action"><a href="/profile">Profile</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="action"><a href="Signout.html">Sign Out</a></span>
+                </li>
+            </div>
+        </div>
+    </section>
     <section class="parts">
-      <h1>View Course</h1>
-      <h2>{{ course.name }}</h2>
-      <p>{{ course.description }}</p>
-      
-      <h3>Papers:</h3>
-      {% for paper in course.papers %}
-          <a href="{{ url_for('get_paper', course_id=str(course._id), filename=paper.link.split('/')[-1]) }}">{{ paper.link.split('/')[-1] }}</a>
-          <a href="{{ url_for('edit_paper', course_id=str(course._id), paper_index=loop.index0) }}">Edit</a>
-          <br>
-      {% endfor %}
+        <h1>Questions for {{ course.name }}</h1>
+        <ul>
+            {% for question in questions %}
+                <li>{{ question.text }}</li>
+            {% endfor %}
+        </ul>
     </section>
   </div>
 </body>
