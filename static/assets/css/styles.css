@@ -6,6 +6,8 @@
   /* --primary-color-light: #4890e9; */
   /* --secondary-color: #fac402;
   --tetiary-color: #fcb721; */
+  --back-color: #f0f0f0;
+  --front-color: #a0c9ff;
   --text-color: #fcfcfc;
 
   /* --description: 1.3rem; */
@@ -64,7 +66,7 @@ button {
 
   outline: none;
 }
-.hundred{
+.hundred {
   width: 100%;
 }
 .parts {
@@ -504,9 +506,9 @@ option {
   color: white;
   border-radius: 4px;
 }
-.input-file {
+/* .input-file {
   display: none; /* Hide the default file input */
-}
+
 .course-btn {
   color: white;
   margin: 0 auto;
@@ -523,6 +525,7 @@ option {
   background-color: #00163f;
   border: 0.1rem solid #00163f;
 }
+
 /* /* ////////My courses ////////// */
 .my-enrolled-courses {
   width: 80%;
@@ -546,4 +549,64 @@ option {
 .courses-color {
   color: #030b53;
   font-size: 2rem;
+}
+/* ////////Student Profile Page////////// */
+/* /////Nav bar////// */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--back-color);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.leftnav {
+  background-color: var(--front-color);
+  margin-left: 2rem;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+}
+.usesearch {
+  font-size: 1.3rem;
+  color: rgb(211, 229, 230);
+}
+.usersearch {
+  width: 20rem;
+  font-size: 1.1rem;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--front-color);
+
+  border: 1px solid var(--front-color);
+  outline: none;
+}
+.rightnav {
+  align-items: center;
+  margin-right: 2rem;
+
+  gap: 1rem;
+}
+.profile-parent {
+  width: 4vw;
+  border-radius: 10rem;
+  background-color: #0e1db0;
+}
+.userprofile {
+  border-radius: 10rem;
+}
+.profile-content {
+  justify-content: space-evenly;
+}
+/* /////below Nav bar for student profile////// */
+.persona {
+  margin-top: 1rem;
+}
+.user-details {
+  width: 30%;
+  height: 20vh;
+  background-color: var(--back-color);
+}
+.basic-info {
+  width: 66%;
+  height: 20vh;
+  background-color: var(--back-color);
 }
