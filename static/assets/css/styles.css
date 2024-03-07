@@ -447,9 +447,22 @@ span.grey {
   font-size: 18px;
 }
 /* /* ////////My courses ////////// */
-.my-enrolled-courses{
-  width: 100%;
+.my-enrolled-courses {
+  width: 80%;
+  margin: 0 auto;
 }
-.enrolled{
+.enrolled {
   width: 100%;
+  padding: 0;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.block-course {
+  width: 10rem;
+  height: 10rem;
+  background-color: #0e1db0;
+}
+.courses-color {
+  color: #030b53;
+  font-size: 2rem;
 }
