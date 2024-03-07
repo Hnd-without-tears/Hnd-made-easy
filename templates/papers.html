@@ -113,7 +113,7 @@
         </div>
     </section>
       <section class="parts">
-        <div class="addquestion">
+         <div class="addquestion">
           <h4>Home/Department/<span>questions</span></h4>
           <div class="controlbox">
             <div>
@@ -164,8 +164,14 @@
               <p>2022</p>
             </div>
           </div>
-          <hr />
-        </div>
+          <hr /> 
+        </div>  
+        <h1>Questions for {{ course['name'] }}</h1>
+    <ul>
+        {% for question in questions %}
+        <li>{{ question['text'] }}</li>
+        {% endfor %}
+    </ul>
       </section>
     </div>
   </body>

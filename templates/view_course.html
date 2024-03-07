@@ -113,16 +113,14 @@
       </div>
   </section>
     <section class="parts">
-      <h1>View Course</h1>
-      <h2>{{ course.name }}</h2>
-      <p>{{ course.description }}</p>
-      
-      <h3>Papers:</h3>
-      {% for paper in course.papers %}
-          <a href="{{ url_for('get_paper', course_id=str(course._id), filename=paper.link.split('/')[-1]) }}">{{ paper.link.split('/')[-1] }}</a>
-          <a href="{{ url_for('edit_paper', course_id=str(course._id), paper_index=loop.index0) }}">Edit</a>
-          <br>
-      {% endfor %}
+        <h1>Upload Course</h1>
+        <form action="{{ url_for('upload_course') }}" method="POST">
+            <label for="course_name">Course Name:</label><br>
+            <input type="text" id="course_name" name="course_name"><br>
+            <label for="course_description">Course Description:</label><br>
+            <textarea id="course_description" name="course_description"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
     </section>
   </div>
 </body>
