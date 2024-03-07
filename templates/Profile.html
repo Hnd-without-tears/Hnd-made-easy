@@ -126,12 +126,15 @@
         <p>Number of questions answered: {{ num_questions_answered }}</p>
     
         <h2>Courses</h2>
-        <ul>
-            {% for course in courses %}
-                <li>{{ course.name }}</li>
-            {% endfor %}
-        </ul>
-    
+        {% for course in courses %}
+        <div class="content">
+            <p class="title">{{ course.name }}</p>
+            <p class="papers">{{ course.num_papers }} papers</p>
+            <a href="{{ url_for('display_questions', course_id=course['_id']) }}" class="viewcourse">
+                Continue <span>&rarr;</span>
+            </a>
+        </div>
+    {% endfor %}
         <h2>Exams</h2>
         <ul>
             {% for exam in exams %}
