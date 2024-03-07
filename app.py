@@ -9,7 +9,6 @@ from pymongo import MongoClient
 from werkzeug.utils import secure_filename
 import os
 from flask_login import login_user,login_required, current_user
-from pymongo import MongoClient
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
