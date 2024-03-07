@@ -107,12 +107,52 @@
                     </li>
                     <li class="element">
                         <i class="fas fa-sign-out-alt"></i>
-                        <span class="action"><a href="Signout.html">Sign Out</a></span>
+                        <span class="action"><a href="/logout">Sign Out</a></span>
                     </li>
                 </div>
             </div>
         </section>
-      <section></section>
+      <section>
+        <h1>User Profile</h1>
+    
+        {% if user %}
+            <p>Welcome, {{ user.username }}!</p>
+            <p>Email: {{ user.email }}</p>
+        {% else %}
+            <p>Please log in to view your profile.</p>
+        {% endif %}
+    
+        <h2>Statistics</h2>
+        <p>Number of questions answered: {{ num_questions_answered }}</p>
+    
+        <h2>Courses</h2>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course.name }}</li>
+            {% endfor %}
+        </ul>
+    
+        <h2>Exams</h2>
+        <ul>
+            {% for exam in exams %}
+                <li>{{ exam.name }}</li>
+            {% endfor %}
+        </ul>
+    
+        <h2>Grades</h2>
+        <ul>
+            {% for grade in grades %}
+                <li>{{ grade.grade }}</li>
+            {% endfor %}
+        </ul>
+    
+        <h2>Notes</h2>
+        <ul>
+            {% for note in notes %}
+                <li>{{ note.title }}</li>
+            {% endfor %}
+        </ul>
+      </section>
     </div>
   </body>
 </html>
