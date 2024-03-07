@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../static/assets/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="allcourses">
+      <section>
+        <div class="panel">
+            <div class="sidebar">
+                <div class="logobox">
+                    <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
+                    <span class="logo">Quizy</span>
+                </div>
+                <li class="element">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="action"><a href="/">Dashboard</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-upload"></i>
+                    <span class="action"><a href="/upload-paper">Upload question</a></span>
+                </li>
+              
+                <li class="element">
+                    <i class="fas fa-eye"></i>
+                    <span class="action"><a href="/courses">View courses</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="action"><a href="/404">View Papers</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-clock"></i>
+                    <span class="action"><a href="/payment-page">Subscription</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-sync-alt"></i>
+                    <span class="action"><a href="/404">Renew plan</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-user"></i>
+                    <span class="action"><a href="/404">Profile</a></span>
+                </li>
+                <li class="element">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="action"><a href="Signout.html">Sign Out</a></span>
+                </li>
+            </div>
+        </div>
+    </section>
+      <section style="width: 100%">
+        <div class="dashboard">
+          <div class="header flex">
+            <div>
+              <h1 class="brd">Student Dashboard</h1>
+              <p class="brd">Home/student dashboard</p>
+            </div>
+            <div><a class="crs" href="Mycourses.html">My Courses</a></div>
+          </div>
+          <div class="mycorse flex">
+            <div class="path">
+              <p class="heding">Continue Journey</p>
+              <hr class="line" />
+              <div class="Journey">
+                <div class="course1 flex">
+                  <div class="flex len">
+                    <div class="flex gap">
+                      <div class="know">
+                        <img src="../static/assets/img/admin/html.png" alt="" />
+                      </div>
+                      <div class="align">
+                        <span class="nehm">Html for Beginners</span>
+                        <p class="num">12 courses</p>
+                      </div>
+                    </div>
+                    <p class="resume">Resume</p>
+                  </div>
+                  <div class="below below1"></div>
+                </div>
+                <div class="course1 flex">
+                  <div class="flex len">
+                    <div class="flex gap">
+                      <div class="know">
+                        <img src="../static/assets/img/admin/css.png" alt="" />
+                      </div>
+                      <div class="align">
+                        <span class="nehm">Css for Beginners</span>
+                        <p class="num">12 courses</p>
+                      </div>
+                    </div>
+                    <p class="resume">Resume</p>
+                  </div>
+                  <div class="below below2"></div>
+                </div>
+                <div class="course1 flex">
+                  <div class="flex len">
+                    <div class="flex gap">
+                      <div class="know">
+                        <img
+                          src="../static/assets/img/admin/script.png"
+                          alt=""
+                        />
+                      </div>
+                      <div class="align">
+                        <span class="nehm">Javascript for Beginners</span>
+                        <p class="num">12 courses</p>
+                      </div>
+                    </div>
+                    <p class="resume">Resume</p>
+                  </div>
+                  <div class="below below3"></div>
+                </div>
+                <div class="course1 flex">
+                  <div class="flex len">
+                    <div class="flex gap">
+                      <div class="know">
+                        <img
+                          src="../static/assets/img/admin/angular.png"
+                          alt=""
+                        />
+                      </div>
+                      <div class="align">
+                        <span class="nehm">Angular js for Beginners</span>
+                        <p class="num">12 courses</p>
+                      </div>
+                    </div>
+                    <p class="resume">Resume</p>
+                  </div>
+                  <div class="below below4"></div>
+                </div>
+              </div>
+            </div>
+            <div class="courses">
+              <p class="heding">COURSES</p>
+              <hr class="line2" />
+              <div class="enrol flex">
+                <div class="studying">
+                  <div class="big">
+                    <img
+                      src="../static/assets/img/admin/image.png"
+                      alt="image"
+                      class="descripimg"
+                    />
+                  </div>
+                  <p class="heding lern">Learn React</p>
+                </div>
+                <div class="studying">
+                  <div class="big">
+                    <img
+                      src="../static/assets/img/admin/image.png"
+                      alt="image"
+                      class="descripimg"
+                    />
+                  </div>
+                  <p class="heding lern">Learn React</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

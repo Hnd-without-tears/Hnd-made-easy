@@ -13,7 +13,9 @@
 *{
   box-sizing: box;
 }
-
+html {
+  box-sizing: border-box;
+}
 body {
   font-family: josefin sans;
   overflow-x: hidden;
@@ -111,6 +113,27 @@ button {
   color: var(--text-color);
   font-weight: 800;
 }
+.dropdown {
+  display: none;
+  width: 84%;
+  margin: 0;
+  padding: 0;
+  padding-left: 2.5rem;
+}
+
+.drop {
+  padding: 1rem 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+.drop:hover {
+  background-color: #4890e9;
+  border-radius: 0.6rem;
+}
+li:hover ul.dropdown {
+  background-color: none;
+  display: block;
+}
 /* PANEL DATA */
 .data {
   width: 80vw;
@@ -119,7 +142,7 @@ button {
   margin-left: 1.4rem;
 }
 .panel {
-  width: 20vw;
+  /* width: 20vw; */
   height: 100vh;
 }
 .tabletopic {
@@ -319,9 +342,101 @@ div.content-2 div.pre-1{
   display: flex;
   margin-bottom: 1rem;
 }
+.coursedetails {
+  width: 100vw;
+}
+.tabletopics {
+  color: var(--title-color);
+  font-weight: 800;
+  font-size: 2rem;
+  /* margin-left: 5rem; */
+}
+.tabletopic {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.content {
+  background-color: #f3f4ff;
+  width: 30vw;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.8;
+  border-radius: 0.6rem;
+}
 
+.title {
+  color: var(--title-color);
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+.papers {
+  font-weight: lighter;
+  color: #141739;
+}
+.viewcourse {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  transition: 0.5s;
+}
+.viewcourse:hover {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.3rem;
+}
+.crs {
+  gap: 1rem;
+  width: 100%;
+}
+/* ///////////////QUESTION PAPER STYLES////////// */
 
+.addquestion {
+  width: 70vw;
+  /* margin: 0 auto; */
+}
+.controlbox {
+  display: flex;
 
-
-
-
+  margin-top: 3rem;
+  gap: 8rem;
+  align-self: center;
+  line-height: 0;
+}
+.controlheading {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-top: 0.9rem;
+}
+.papername {
+  width: 20rem;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  outline: var(--primary-color);
+}
+.papernam {
+  /* margin-right: 2rem; */
+  padding: 0.4rem 1rem;
+  width: 7.3rem;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  /* height: 1.6rem; */
+}
+.papericon {
+  color: red;
+  font-size: 2rem;
+  line-height: 2.5;
+  margin-right: 1.5rem;
+  /* background-color: red; */
+}
+.paper {
+  display: flex;
+}
