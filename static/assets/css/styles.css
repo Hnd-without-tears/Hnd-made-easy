@@ -10,7 +10,7 @@
 
   /* --description: 1.3rem; */
 }
-*{
+* {
   box-sizing: box;
 }
 html {
@@ -238,17 +238,17 @@ input {
 .direction {
   margin-right: 2rem;
 }
-.cont{
+.cont {
   display: flex;
 }
-.cont-1{
+.cont-1 {
   font-size: 300px;
 }
 .coursetable {
   width: 70vw;
 
   height: max-content;
-  margin-left: 20rem;
+  margin: 0 auto;
   position: absolute;
   top: 16px;
 }
@@ -258,7 +258,6 @@ input {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 0px;
-  
 }
 /* .content {
   background-color: var(--primary-color);
@@ -269,7 +268,7 @@ input {
   border-radius: 0.6rem;
   height: 80%;
 } */
-.content-1{
+.content-1 {
   background-color: rgb(83, 23, 83);
   width: 240px;
   color: white;
@@ -278,27 +277,24 @@ input {
   /* padding: 12px 14px; */
   border-radius: 4px;
 
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.myimg{
+.myimg {
   justify-content: center;
   padding: 83px;
 }
 
-div.content-1 div.pre-1{
- width: 100%;
-background-color: white;
-height: 50px;
-color: black;
-text-align: center;
-
-
+div.content-1 div.pre-1 {
+  width: 100%;
+  background-color: white;
+  height: 50px;
+  color: black;
+  text-align: center;
 }
 
 /* styling the cont-2 tag */
-.content-2{
+.content-2 {
   background-color: rgb(20, 47, 63);
   width: 240px;
   color: white;
@@ -310,20 +306,18 @@ text-align: center;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.fa-heart-o{
+.fa-heart-o {
   font-size: 40px;
   color: red;
 }
 
-div.content-2 div.pre-1{
+div.content-2 div.pre-1 {
   width: 100%;
- background-color: white;
- height: 50px;
- color: black;
- text-align: center;
- 
- 
- }
+  background-color: white;
+  height: 50px;
+  color: black;
+  text-align: center;
+}
 .coursetablecontent {
   display: flex;
   margin-bottom: 1rem;
@@ -331,7 +325,6 @@ div.content-2 div.pre-1{
   column-gap: 1rem;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  
 }
 .dropdown {
   font-size: 2rem;
@@ -439,4 +432,116 @@ div.content-2 div.pre-1{
 }
 .paper {
   display: flex;
+}
+
+.dashboard-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  width: 2000px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.dashboard-element {
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-element h2 {
+  margin-bottom: 10px;
+}
+
+.answered-questions {
+  font-weight: bold;
+  font-size: 18px;
+}
+/* /////////New backend styles///////// */
+.flex {
+  display: flex;
+}
+.upload {
+  width: 75%;
+  margin: 0 auto;
+}
+.upload-form {
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #f5f6fc;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  width: 23vw;
+  /* text-align: center; */
+}
+.upload-des {
+  position: relative;
+  font-size: 1.3rem;
+}
+.course-name {
+  width: 23vw;
+  padding: 0.7rem 0.2rem;
+  font-size: 1.2rem;
+  border: 1px solid #d8dbf0;
+  background-color: #d8dbf0;
+  outline-color: #0e1db0;
+  border-radius: 0.5rem;
+}
+option {
+  /* outline:1px solid #0e1db0; */
+}
+.course-upload {
+  background-color: #d8dbf0;
+  border: 1px solid black;
+  padding: 0.7rem 0.2rem;
+  border: 1px solid #d8dbf0;
+  padding: 8px 12px;
+  width: 21vw;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+}
+.input-file {
+  display: none; /* Hide the default file input */
+}
+.course-btn {
+  color: white;
+  margin: 0 auto;
+
+  background-color: hsla(219, 100%, 12%, 0.822);
+  border: 0.1rem solid #00163f;
+}
+.course-name:hover {
+  outline: #0e1db0;
+}
+.course-btn:hover {
+  color: white;
+  margin: 0 auto;
+  background-color: #00163f;
+  border: 0.1rem solid #00163f;
+}
+/* /* ////////My courses ////////// */
+.my-enrolled-courses {
+  width: 80%;
+  margin: 0 auto;
+}
+.enrolled {
+  width: 100%;
+  padding: 0;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.block-course {
+  width: 10rem;
+  height: 10rem;
+  background-color: #0e1db0;
+}
+.page-color {
+  color: #030b53;
+  font-size: 2rem;
+}
+.courses-color {
+  color: #030b53;
+  font-size: 2rem;
 }

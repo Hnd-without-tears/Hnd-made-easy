@@ -70,60 +70,62 @@
 <body>
   <div class="allcourses">
     <section>
-        <div class="panel">
-            <div class="sidebar">
-                <div class="logobox">
-                    <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
-                    <span class="logo">Quizy</span>
-                </div>
-                <li class="element">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span class="action"><a href="/">Dashboard</a></span>
-                </li>
-                <li class="element">
-                    <i class="fas fa-upload"></i>
-                    <span class="action"><a href="/upload-paper">Upload question</a></span>
-                </li>
-              
-                <li class="element">
-                    <i class="fas fa-eye"></i>
-                    <span class="action"><a href="/courses">View courses</a></span>
-                </li>
-                <li class="element">
-                    <i class="fas fa-file-alt"></i>
-                    <span class="action"><a href="/404">View Papers</a></span>
-                </li>
-                <li class="element">
-                    <i class="fas fa-clock"></i>
-                    <span class="action"><a href="/payment-page">Subscription</a></span>
-                </li>
-                <li class="element">
-                    <i class="fas fa-sync-alt"></i>
-                    <span class="action"><a href="/404">Renew plan</a></span>
-                </li>
-                <li class="element">
-                    <i class="fas fa-user"></i>
-                    <span class="action"><a href="/404">Profile</a></span>
-                </li>
-                <li class="element">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="action"><a href="Signout.html">Sign Out</a></span>
-                </li>
-            </div>
-        </div>
-    </section>
-    <section>
-        <h1>Upload Paper</h1>
-        <form action="{{ url_for('upload_paper') }}" method="POST" enctype="multipart/form-data">
-            <label for="course_name">Select a Course:</label><br>
-            <select id="course_name" name="course_name">
+      <div class="panel">
+          <div class="sidebar">
+              <div class="logobox">
+                  <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
+                  <span class="logo">Quizy</span>
+              </div>
+              <li class="element">
+                  <i class="fas fa-tachometer-alt"></i>
+                  <span class="action"><a href="/">Dashboard</a></span>
+              </li>
+              <li class="element">
+                  <i class="fas fa-upload"></i>
+                  <span class="action"><a href="/upload-paper">Upload question</a></span>
+              </li>
+            
+              <li class="element">
+                  <i class="fas fa-eye"></i>
+                  <span class="action"><a href="/view-papers">View courses</a></span>
+              </li>
+              <li class="element">
+                  <i class="fas fa-file-alt"></i>
+                  <span class="action"><a href="/view-papers">View Papers</a></span>
+              </li>
+              <li class="element">
+                  <i class="fas fa-clock"></i>
+                  <span class="action"><a href="/payment-page">Subscription</a></span>
+              </li>
+              <li class="element">
+                  <i class="fas fa-sync-alt"></i>
+                  <span class="action"><a href="/404">Renew plan</a></span>
+              </li>
+              <li class="element">
+                  <i class="fas fa-user"></i>
+                  <span class="action"><a href="/404">Profile</a></span>
+              </li>
+              <li class="element">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span class="action"><a href="Signout.html">Sign Out</a></span>
+              </li>
+          </div>
+      </div>
+  </section>
+    <section class="upload">
+        <h1 class="page-color">Upload Paper</h1>
+        <form action="{{ url_for('upload_paper') }}" method="POST" enctype="multipart/form-data" class="upload-form flex">
+            <div>
+            <label for="course_name" class="upload-des">Select a Course:</label><br>
+            <select id="course_name" name="course_name" class="course-name">
                 {% for course in courses %}
                     <option value="{{ course['name'] }}">{{ course['name'] }}</option>
                 {% endfor %}
-            </select><br>
-            <label for="paper">Select a paper to upload:</label><br>
-            <input type="file" id="paper" name="paper" accept=".pdf"><br>
-            <input type="submit" value="Submit">
+            </select><br></div>
+            <div>
+            <label for="paper" class="upload-des">Select a paper to upload:</label><br>
+            <input type="file" id="paper" name="paper" accept=".pdf" class="course-name course-upload"></div><br>
+            <input type="submit" value="Submit" class="course-name course-btn">
         </form>        
     </section>
   </div>
