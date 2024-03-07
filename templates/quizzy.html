@@ -124,8 +124,7 @@
                     </li>
                     <li class="element">
                         <i class="fas fa-eye"></i>
-                        <span class="action"><a href="/courses">View courses</a></span>
-                    </li>
+                        <span class="action"><a href="{{ url_for('view_course', course_id=str(course._id)) }}">View Course</a></span>                    </li>
                     <li class="element">
                         <i class="fas fa-file-alt"></i>
                         <span class="action"><a href="/view-papers">View Papers</a></span>
@@ -205,6 +204,13 @@
         </section>
         <section class="dashboard-section">
             <div class="dashboard-element">
+              {% if user %}
+              <p>Welcome, {{ user.username }}!</p>
+              <a href="{{ url_for('logout') }}">Logout</a>
+          {% else %}
+              <p>Welcome, Guest!</p>
+              <a href="{{ url_for('login') }}">Login</a>
+          {% endif %}
                 <h2>Number of Questions Answered</h2>
                 <p class="answered-questions">{{ num_questions_answered }} questionsanswered</p>
             </div>

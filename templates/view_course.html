@@ -3,72 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/assets/css/styles.css" />
   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        /* Add custom styles here */
-        .allcourses {
-            display: flex;
-            justify-content: space-between;
-        }
+  <style>
+      /* Add custom styles here */
+      .allcourses {
+          display: flex;
+          justify-content: space-between;
+      }
 
-        .panel {
-            display: flex;
-            background-color: #f0f0f0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+      .panel {
+          display: flex;
+          background-color: #f0f0f0;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-        .sidebar {
-            width: 200px;
-            padding: 20px;
-            background-color: navy;
-            color: #fff;
-        }
+      .sidebar {
+          width: 200px;
+          padding: 20px;
+          background-color: navy;
+          color: #fff;
+      }
 
-        .logobox {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+      .logobox {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+      }
 
-        .logobox img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
+      .logobox img {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+      }
 
-        .logo {
-            font-weight: bold;
-            font-size: 20px;
-        }
+      .logo {
+          font-weight: bold;
+          font-size: 20px;
+      }
 
-        .element {
-            margin-bottom: 10px;
-            list-style-type: none;
-            display: flex;
-            align-items: center;
-        }
+      .element {
+          margin-bottom: 10px;
+          list-style-type: none;
+          display: flex;
+          align-items: center;
+      }
 
-        .element i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
+      .element i {
+          margin-right: 10px;
+          font-size: 20px;
+      }
 
-        .action a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-        }
+      .action a {
+          text-decoration: none;
+          color: #fff;
+          font-weight: bold;
+      }
 
-        .action a:hover {
-            color: #f00;
-        }
-    </style>
-  <title>Upload Paper</title>
+      .action a:hover {
+          color: #f00;
+      }
+  </style>
+  <title>Document</title>
 </head>
 <body>
-  <div class="allcourses">
+  <div class="allcourse">
     <section>
       <div class="panel">
           <div class="sidebar">
@@ -112,16 +112,17 @@
           </div>
       </div>
   </section>
-    <section>
-      <div class="paper-upload">
-        <h1>Upload Paper</h1>
-        <form action="{{ url_for('upload_paper', course_id=course_id) }}" method="POST" enctype="multipart/form-data">
-            <label for="paper">Select a PDF file:</label>
-            <input type="file" name="paper" id="paper" accept=".pdf" required>
-            <br>
-            <input type="submit" value="Upload">
-        </form>
-      </div>
+    <section class="parts">
+      <h1>View Course</h1>
+      <h2>{{ course.name }}</h2>
+      <p>{{ course.description }}</p>
+      
+      <h3>Papers:</h3>
+      {% for paper in course.papers %}
+          <a href="{{ url_for('get_paper', course_id=str(course._id), filename=paper.link.split('/')[-1]) }}">{{ paper.link.split('/')[-1] }}</a>
+          <a href="{{ url_for('edit_paper', course_id=str(course._id), paper_index=loop.index0) }}">Edit</a>
+          <br>
+      {% endfor %}
     </section>
   </div>
 </body>

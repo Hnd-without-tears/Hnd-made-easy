@@ -165,38 +165,16 @@
       </div>
   </section>
     <section class="parts">
-      <div class="coursedetails">
-        <div class="direction">
-          <h4>Home/papers/<span>department</span></h4>
-        </div>
-        <div class="coursetable">
-          <div class="heading">
-            <span class="tabletopics">Past Questions</span>
-            <div>
-              <span>Sort By</span>
-              <span class="dropdown">&rsaquo;</span>
-            </div>
-          </div>
-        
-          {% for course, papers in papers_by_course.items %}
-          <span class="tabletopic">{{ course }}</span>
-          <div class="flex crs">
-            {% for paper in papers %}
-            <div class="coursetablecontent">
-              <div class="content">
-                <p class="title">{{ paper.title }}</p>
-                <a href="{{ paper.file.url }}" class="viewcourse">
-                  View
-                  <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-          {% endfor %}
-        </div>
-        
-      </div>
+      <h1>View Course</h1>
+      <h2>{{ course.name }}</h2>
+      <p>{{ course.description }}</p>
+      
+      <h3>Papers:</h3>
+      {% for paper in course.papers %}
+          <a href="{{ url_for('get_paper', course_id=str(course._id), filename=paper.link.split('/')[-1]) }}">{{ paper.link.split('/')[-1] }}</a>
+          <a href="{{ url_for('edit_paper', course_id=str(course._id), paper_index=loop.index0) }}">Edit</a>
+          <br>
+      {% endfor %}
     </section>
   </div>
 </body>

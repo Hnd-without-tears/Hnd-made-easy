@@ -9,6 +9,7 @@ from pymongo import MongoClient
 from werkzeug.utils import secure_filename
 import os
 from flask_login import login_user,login_required, current_user
+from pymongo import MongoClient
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
@@ -26,6 +27,15 @@ courses_collection = db["courses"]
 exams_collection = db["exams"]
 grades_collection = db["grades"]
 notes_collection = db["notes"]
+
+# Configuration for file upload
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = {'pdf'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -99,16 +109,12 @@ class CourseForm(FlaskForm):
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Create')
 
-class PaperUploadForm(FlaskForm):
-    course_id = SelectField('Course', coerce=str, validators=[DataRequired()])
-    title = StringField('Title', validators=[DataRequired()])
-    file_url = StringField('File URL', validators=[DataRequired()])
-    submit = SubmitField('Upload Paper')
+
 
 @app.route('/')
 def index():
     user_id = session.get('user_id')
-    user = None  # Define user variable with a default value
+    user = None
     if user_id:
         user_data = db.users.find_one({'_id': ObjectId(user_id)})
         if user_data:
@@ -275,38 +281,10 @@ def get_payment_amount(plan):
 def payment_page():
     return render_template('payment.html')
 
-@app.route('/view-papers')
-def view_papers():
-    # Fetch paper data from the database
-    papers = db.papers.find()
-
-    # Organize papers by course for easier rendering in the template
-    papers_by_course = {}
-    for paper in papers:
-        course_id = paper.get('course_id')
-        course = db.courses.find_one({'_id': course_id})
-        if course:
-            department_id = course.get('department')
-            department = db.departments.find_one({'_id': department_id})
-            if department:
-                school_id = department.get('school')
-                school = db.schools.find_one({'_id': school_id})
-                if school:
-                    school_name = school.get('name')
-                    department_name = department.get('name')
-                    course_name = course.get('name')
-                    full_course_name = f"{school_name} - {department_name} - {course_name}"
-                    if full_course_name not in papers_by_course:
-                        papers_by_course[full_course_name] = []
-                    papers_by_course[full_course_name].append(paper)
-
-    return render_template('viewpaper.html', papers_by_course=papers_by_course)
 
 @app.route('/courses')
 def courses():
-    
-    courses = list(db["courses"].find())  # Fetch all courses from the "courses" collection
-    
+    courses = courses_collection.find()
     return render_template('Courses.html', courses=courses)
 
 @app.route('/courses/upload', methods=['GET', 'POST'])
@@ -347,6 +325,81 @@ def edit_course(course_id):
         return redirect(url_for('index'))
 
     return render_template('edit_course.html', course=course)
+
+@app.route('/courses/<course_id>/upload_paper', methods=['GET', 'POST'])
+def upload_paper(course_id):
+    if request.method == 'POST':
+        # Handle file upload
+        if 'paper' in request.files:
+            paper_file = request.files['paper']
+            if paper_file and allowed_file(paper_file.filename):
+                filename = secure_filename(paper_file.filename)
+                paper_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                paper_link = url_for('get_paper', course_id=str(course_id), filename=filename)
+                # Store the link to the paper in the database
+                db["courses"].update_one({'_id': ObjectId(course_id)}, {'$push': {'papers': {'link': paper_link}}})
+
+        # Redirect to the course page with a success message
+        session['paper_added'] = True
+        return redirect(url_for('view_course', course_id=course_id))
+
+    return render_template('upload_paper.html', course_id=course_id)
+
+@app.route('/courses/<course_id>/edit_paper/<paper_index>', methods=['GET', 'POST'])
+def edit_paper(course_id, paper_index):
+    course = db["courses"].find_one({'_id': ObjectId(course_id)})
+
+    if course and 'papers' in course:
+        papers = course['papers']
+        paper = papers[int(paper_index)]
+
+        if request.method == 'POST':
+            # Handle file upload
+            if 'paper' in request.files:
+                paper_file = request.files['paper']
+                if paper_file and allowed_file(paper_file.filename):
+                    filename = secure_filename(paper_file.filename)
+                    paper_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                    paper_link = url_for('get_paper', course_id=str(course_id), filename=filename)
+                    # Update the paper link in the database
+                    db["courses"].update_one({'_id': ObjectId(course_id), 'papers.link': paper['link']}, {'$set': {'papers.$.link': paper_link}})
+                    
+                    # Remove the old paper file
+                    old_filename = paper['link'].split('/')[-1]
+                    old_file_path = os.path.join(app.config['UPLOAD_FOLDER'], old_filename)
+                    if os.path.exists(old_file_path):
+                        os.remove(old_file_path)
+
+            # Redirect to the course page with a success message
+            session['paper_updated'] = True
+            return redirect(url_for('view_course', course_id=course_id))
+
+        return render_template('edit_paper.html', course_id=course_id, paper_index=paper_index, paper=paper)
+
+    return "Course or paper not found."
+
+@app.route('/courses/<course_id>/view')
+def view_course(course_id):
+    course = db["courses"].find_one({'_id': ObjectId(course_id)})
+    
+    if course:
+        return render_template('view_course.html', course=course)
+
+    return "Course not found."
+
+@app.route('/courses/paper/<course_id>/<filename>')
+def get_paper(course_id, filename):
+    # Get the paper link from the database
+    course = db["courses"].find_one({'_id': ObjectId(course_id), 'papers.link': {'$regex': filename}})
+    
+    if course and 'papers' in course:
+        papers = course['papers']
+        paper = next((p for p in papers if p['link'].split('/')[-1] == filename), None)
+        if paper:
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            return redirect(paper['link'])
+    
+    return "Paper not found."
 
 @app.route('/schools', methods=['GET', 'POST'])
 def create_school():
