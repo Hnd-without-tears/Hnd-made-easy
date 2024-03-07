@@ -29,7 +29,7 @@ exams_collection = db["exams"]
 grades_collection = db["grades"]
 notes_collection = db["notes"]
 questions_collection = db["questions"] 
-
+papers_collection = db["papers"]
 # Configuration for file upload
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf'}
@@ -93,24 +93,6 @@ class AdminLoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
-
-# Define WTForms for your forms
-class SchoolForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
-    submit = SubmitField('Create')
-
-class DepartmentForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    school_id = SelectField('School', coerce=str, validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
-    submit = SubmitField('Create')
-
-class CourseForm(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
-    department_id = SelectField('Department', coerce=str, validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
-    submit = SubmitField('Create')
 
 
 
@@ -249,8 +231,6 @@ def login():
     return render_template('Login.html')
 
    
-
-
 @app.route('/payment', methods=['GET', 'POST'])
 def handle_payment():
     if request.method == 'GET':
@@ -357,12 +337,12 @@ def upload_paper():
             if course:
                 course_id = course['_id']
 
-                # Store the link to the paper in the questions collection
-                question = {
+                # Store the link to the paper in the papers collection
+                paper = {
                     'course_id': course_id,
                     'paper_link': paper_link
                 }
-                questions_collection.insert_one(question)
+                papers_collection.insert_one(paper)
 
                 session['paper_added'] = True
                 return redirect(url_for('index'))
@@ -373,6 +353,7 @@ def upload_paper():
     # Fetch the list of courses to display in the form
     courses = courses_collection.find()
     return render_template('upload-paper.html', courses=courses)
+
 # Function to get questions for a given course_id
 def get_questions_for_course(course_id):
     # Assuming you have a MongoDB collection named 'questions'
@@ -384,16 +365,27 @@ def get_course_details(course_id):
     # Assuming you have a MongoDB collection named 'courses'
     course = db.courses.find_one({'_id': ObjectId(course_id)})
     return course
+
 @app.route('/courses')
 def courses():
     courses = db.courses.find()  # Fetch all courses from the database
     return render_template('Courses.html', courses=courses)
 
-@app.route('/questions/<course_id>')
-def questions(course_id):
-    course = db.courses.find_one({'_id': course_id})  # Fetch the selected course
-    questions = db.questions.find({'course_id': course_id})  # Fetch questions for the selected course
-    return render_template('papers.html', course=course, questions=questions)
+# @app.route('/questions/<course_id>')
+# def questions(course_id):
+#     course = db.courses.find_one({'_id': course_id})  # Fetch the selected course
+#     questions = db.questions.find({'course_id': course_id})  # Fetch questions for the selected course
+#     return render_template('papers.html', course=course, questions=questions)
+
+@app.route('/papers/<course_id>')
+def papers(course_id):
+    course = get_course_details(course_id)  # Fetch the selected course
+    papers = get_papers_for_course(course_id)  # Fetch papers for the selected course
+    return render_template('papers.html', course=course, papers=papers)
+
+def get_papers_for_course(course_id):
+    papers = papers_collection.find({'course_id': course_id})  # Assuming 'papers_collection' is your collection
+    return list(papers)
 
 # @app.route('/course/<course_id>/questions')
 # def course_questions(course_id):
@@ -406,44 +398,6 @@ def questions(course_id):
 #         # Handle case where course is not found
 #         return "Course not found", 404
     
-@app.route('/schools', methods=['GET', 'POST'])
-def create_school():
-    form = SchoolForm()
-    if form.validate_on_submit():
-        name = form.name.data
-        description = form.description.data
-        school = School(name, description)
-        db.schools.insert_one(school.__dict__)  # Insert school into MongoDB
-        flash('School created successfully!', 'success')
-        return redirect('/schools')
-    return render_template('schools.html', form=form)
-
-@app.route('/schools/delete/<string:school_id>', methods=['POST'])
-def delete_school(school_id):
-    db.schools.delete_one({'_id': ObjectId(school_id)})
-    flash('School deleted successfully!', 'success')
-    return redirect('/schools')
-
-# Routes for departments
-@app.route('/departments', methods=['GET', 'POST'])
-def create_department():
-    form = DepartmentForm()
-    form.school_id.choices = [(str(school['_id']), school['name']) for school in db.schools.find()]
-    if form.validate_on_submit():
-        name = form.name.data
-        school_id = form.school_id.data
-        description = form.description.data
-        department = Department(name, ObjectId(school_id), description)
-        db.departments.insert_one(department.__dict__)  # Insert department into MongoDB
-        flash('Department created successfully!', 'success')
-        return redirect('/departments')
-    return render_template('departments.html', form=form)
-
-@app.route('/departments/delete/<string:department_id>', methods=['POST'])
-def delete_department(department_id):
-    db.departments.delete_one({'_id': ObjectId(department_id)})
-    flash('Department deleted successfully!', 'success')
-    return redirect('/departments')
 
 @app.route('/404')
 def notfound():
