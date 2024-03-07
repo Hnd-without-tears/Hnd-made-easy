@@ -125,7 +125,6 @@
           </div>
         </div>
       </section>
-<<<<<<< HEAD
       <section class="my-enrolled-courses">
         <div class =" first-sec">
           <h1 class="courses-color">Courses</h1>
@@ -166,32 +165,6 @@
           </li>
           {% endfor %}
         </ul>
-=======
-      <section class="hundred">
-        <div class="coursetable">
-          <div class="heading">
-            <span class="tabletopics">My Courses</span>
-            <div>
-              <span>Sort By</span>
-              <span class="dropdown">&rsaquo;</span>
-            </div>
-          </div>
-          <div class="coursetablecontent">
-            {% for course in courses %}
-            <div class="content">
-              <p class="title">{{ course.name }}</p>
-              <p class="papers">{{ course.num_papers }} papers</p>
-              <a
-                href="{{ url_for('papers', course_id=course['_id']) }}"
-                class="viewcourse"
-              >
-                Continue <span>&rarr;</span>
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
->>>>>>> 892b33812d3e36ed45b43272e98ca5a256ef3b75
       </section>
     </div>
   </body>
