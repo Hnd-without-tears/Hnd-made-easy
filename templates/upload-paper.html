@@ -115,12 +115,16 @@
     <section>
         <h1>Upload Paper</h1>
         <form action="{{ url_for('upload_paper') }}" method="POST" enctype="multipart/form-data">
-            <label for="course_id">Course ID:</label><br>
-            <input type="text" id="course_id" name="course_id"><br>
+            <label for="course_name">Select a Course:</label><br>
+            <select id="course_name" name="course_name">
+                {% for course in courses %}
+                    <option value="{{ course['name'] }}">{{ course['name'] }}</option>
+                {% endfor %}
+            </select><br>
             <label for="paper">Select a paper to upload:</label><br>
             <input type="file" id="paper" name="paper" accept=".pdf"><br>
             <input type="submit" value="Submit">
-        </form>
+        </form>        
     </section>
   </div>
 </body>

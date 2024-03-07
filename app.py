@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, flash, session, jsonify, url_for
+from flask import Flask, render_template, redirect, request, flash, send_file, session, jsonify, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import DataRequired
@@ -28,6 +28,7 @@ courses_collection = db["courses"]
 exams_collection = db["exams"]
 grades_collection = db["grades"]
 notes_collection = db["notes"]
+questions_collection = db["questions"] 
 
 # Configuration for file upload
 UPLOAD_FOLDER = 'uploads'
@@ -195,11 +196,13 @@ def initialize_admin_user():
 def signup():
     if request.method == 'POST':
         username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
         
-        # Check if username already exists
-        if db.users.find_one({'username': username}):
-            error = 'Username already exists'
+        # Check if username or email already exists
+        existing_user = db.users.find_one({'$or': [{'username': username}, {'email': email}]})
+        if existing_user:
+            error = 'Username or email already exists'
             return render_template('signup.html', error=error)
         
         # Hash the password
@@ -208,6 +211,7 @@ def signup():
         # Create a new user document
         user = {
             'username': username,
+            'email': email,
             'password': hashed_password
         }
         
@@ -223,22 +227,28 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        
-        # Check if username and password are valid (e.g., by querying the database)
-        user = db.users.find_one({'username': username})
-        if user and check_password_hash(user['password'], password):
-            # If valid, set user_id in session and redirect to index page
-            session['user_id'] = str(user['_id'])
-            return redirect(url_for('index'))
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        # Validate email and password
+        if email and password:
+            # Find user by email
+            user = db.users.find_one({'email': email})
+            if user and check_password_hash(user['password'], password):
+                # Store user ID in session
+                session['user_id'] = str(user['_id'])
+                return redirect(url_for('index'))
+            else:
+                error_message = "Invalid email or password. Please try again."
+                return render_template('Login.html', error=error_message)
         else:
-            # If invalid, show error message
-            error = 'Invalid username or password'
-            return render_template('Login.html', error=error)
+            error_message = "Email and password are required."
+            return render_template('Login.html', error=error_message)
     
-    # If GET request, render the login form
+    # If it's a GET request, render the login form
     return render_template('Login.html')
+
+   
 
 
 @app.route('/payment', methods=['GET', 'POST'])
@@ -314,23 +324,88 @@ def upload_course():
 
     return render_template('upload_course.html')
 
+@app.route('/papers/<filename>', methods=['GET'])
+def get_paper(filename):
+    # Construct the path to the uploaded paper
+    paper_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+    # Check if the paper exists
+    if os.path.exists(paper_path):
+        # Serve the paper file
+        return send_file(paper_path, as_attachment=True)
+    else:
+        # Return a 404 error if the paper does not exist
+        return render_template('404_temp.html')
+
 @app.route('/upload-paper', methods=['GET', 'POST'])
 def upload_paper():
     if request.method == 'POST':
-        course_id = request.form['course_id']
-        if 'paper' in request.files:
-            paper_file = request.files['paper']
-            if paper_file and allowed_file(paper_file.filename):
-                filename = secure_filename(paper_file.filename)
-                paper_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                paper_link = url_for('get_paper', course_id=course_id, filename=filename)
-                # Store the link to the paper in the database
-                db["courses"].update_one({'_id': ObjectId(course_id)}, {'$push': {'papers': {'link': paper_link}}})
+        course_name = request.form.get('course_name')
+        paper_file = request.files.get('paper')
+
+        # Check if the file is valid and allowed
+        if paper_file and allowed_file(paper_file.filename):
+            # Secure the filename and save the file to the upload folder
+            filename = secure_filename(paper_file.filename)
+            paper_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            # Generate the paper link
+            paper_link = url_for('get_paper', filename=filename, _external=True)
+
+            # Find the course ID based on the selected course name
+            course = courses_collection.find_one({'name': course_name})
+            if course:
+                course_id = course['_id']
+
+                # Store the link to the paper in the questions collection
+                question = {
+                    'course_id': course_id,
+                    'paper_link': paper_link
+                }
+                questions_collection.insert_one(question)
+
                 session['paper_added'] = True
                 return redirect(url_for('index'))
+            else:
+                error_message = "Selected course not found."
+                return render_template('upload-paper.html', error=error_message)
 
-    return render_template('upload-paper.html')
+    # Fetch the list of courses to display in the form
+    courses = courses_collection.find()
+    return render_template('upload-paper.html', courses=courses)
+# Function to get questions for a given course_id
+def get_questions_for_course(course_id):
+    # Assuming you have a MongoDB collection named 'questions'
+    questions = db.questions.find({'course_id': course_id})
+    return list(questions)
 
+# Function to get course details for a given course_id
+def get_course_details(course_id):
+    # Assuming you have a MongoDB collection named 'courses'
+    course = db.courses.find_one({'_id': ObjectId(course_id)})
+    return course
+@app.route('/courses')
+def courses():
+    courses = db.courses.find()  # Fetch all courses from the database
+    return render_template('Courses.html', courses=courses)
+
+@app.route('/questions/<course_id>')
+def questions(course_id):
+    course = db.courses.find_one({'_id': course_id})  # Fetch the selected course
+    questions = db.questions.find({'course_id': course_id})  # Fetch questions for the selected course
+    return render_template('papers.html', course=course, questions=questions)
+
+# @app.route('/course/<course_id>/questions')
+# def course_questions(course_id):
+#     course = courses_collection.find_one({'_id': ObjectId(course_id)})
+#     if course:
+#         # Fetch questions for the given course from the database
+#         questions = questions_collection.find({'course_id': course_id})
+#         return render_template('course_questions.html', course=course, questions=questions)
+#     else:
+#         # Handle case where course is not found
+#         return "Course not found", 404
+    
 @app.route('/schools', methods=['GET', 'POST'])
 def create_school():
     form = SchoolForm()
