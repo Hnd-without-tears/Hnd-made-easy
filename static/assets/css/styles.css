@@ -440,3 +440,115 @@ div.content-2 div.pre-1{
 .paper {
   display: flex;
 }
+
+.dashboard-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+  width: 2000px;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.dashboard-element {
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-element h2 {
+  margin-bottom: 10px;
+}
+
+.answered-questions {
+  font-weight: bold;
+  font-size: 18px;
+}
+/* /////////New backend styles///////// */
+.flex {
+  display: flex;
+}
+.upload {
+  width: 75%;
+  margin: 0 auto;
+}
+.upload-form {
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #f5f6fc;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 2rem 1rem;
+  width: 23vw;
+  /* text-align: center; */
+}
+.upload-des {
+  position: relative;
+  font-size: 1.3rem;
+}
+.course-name {
+  width: 23vw;
+  padding: 0.7rem 0.2rem;
+  font-size: 1.2rem;
+  border: 1px solid #d8dbf0;
+  background-color: #d8dbf0;
+  outline-color: #0e1db0;
+  border-radius: 0.5rem;
+}
+option {
+  /* outline:1px solid #0e1db0; */
+}
+.course-upload {
+  background-color: #d8dbf0;
+  border: 1px solid black;
+  padding: 0.7rem 0.2rem;
+  border: 1px solid #d8dbf0;
+  padding: 8px 12px;
+  width: 21vw;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+}
+.input-file {
+  display: none; /* Hide the default file input */
+}
+.course-btn{
+  color: white;
+  margin: 0 auto;
+  
+  background-color: hsla(219, 100%, 12%, 0.822);
+  border: .1rem solid #00163f;;
+}
+.course-name:hover{
+  outline: #0e1db0;
+}
+.course-btn:hover{
+  color: white;
+  margin: 0 auto;
+  background-color: #00163f;
+  border: .1rem solid #00163f;;
+}
+/* /* ////////My courses ////////// */
+.my-enrolled-courses {
+  width: 80%;
+  margin: 0 auto;
+}
+.enrolled {
+  width: 100%;
+  padding: 0;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.block-course {
+  width: 10rem;
+  height: 10rem;
+  background-color: #0e1db0;
+}
+.page-color {
+  color: #030b53;
+  font-size: 2rem;
+}
+.courses-color {
+  color: #030b53;
+  font-size: 2rem;
+}
