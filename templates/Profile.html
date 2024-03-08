@@ -136,9 +136,21 @@
             />
           </div>
           <div class="rightnav flex">
+<<<<<<< HEAD
               <span class="bell">10</span>
             <i class="far fa-bell "></i>
             <span>Yohashi</span>
+=======
+            {% if user %} 
+            <i class="far fa-bell "><span class="bell">10</span></i>
+            <span>
+                
+                <p></p>
+                {% else %}
+                <p>log in </p>
+                {% endif %}
+                </span>
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
             <div class="profile-parent">
               <img src="" alt="" class="userprofile hundred" />
             </div>
@@ -155,8 +167,13 @@
                 <h2 class="basic-info-head">Personal Details</h2>
                 <div class="flex user-descrip">
                 <div>
+<<<<<<< HEAD
                   <span>First Name</span><br>
                   <input type="text" readonly placeholder="Tabe " class="read"/>
+=======
+                  <span></span><br>
+                  <input type="text" readonly placeholder=" " class="read"/>
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
                 </div>
                 <div>
                   <span>Last Name</span><br>
@@ -169,8 +186,13 @@
                     <input type="text" readonly placeholder="Software Engineering"class="read" />
                   </div>
                   <div>
+<<<<<<< HEAD
                     <span>Email</span><br>
                     <input type="text" readonly placeholder="Joeltabe@gmail.com" class="read"/>
+=======
+                    <span></span><br>
+                    <input type="text" readonly placeholder="{{ user.email }}" class="read"/>
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
                   </div>
                 </div>
                 <form action="" class="flex pass-update">
@@ -185,17 +207,25 @@
                 </div>
                 </form>
             </div>
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
             </div>
           </div>
         </div>
         <!-- <h1>User Profile</h1>
 
+<<<<<<< HEAD
         {% if user %}
         <p>Welcome, {{ user.username }}!</p>
         <p>Email: {{ user.email }}</p>
         {% else %}
         <p>Please log in to view your profile.</p>
         {% endif %}
+=======
+        
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
 
         <h2>Statistics</h2>
         <p>Number of questions answered: {{ num_questions_answered }}</p> -->

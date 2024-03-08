@@ -96,7 +96,7 @@ button {
 }
 .element {
   padding: 0.5rem 0;
-  width: 14rem;
+  width: 13```rem;
   transition: 0.7s;
 }
 .element:hover {
@@ -607,8 +607,13 @@ option {
   border-radius: 1rem;
   text-align: center;
   position: relative;
+<<<<<<< HEAD
   right: 1.3rem;
   bottom: 0.3rem;
+=======
+  right: .3rem;
+  bottom: 0.5rem;
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
 }
 /* /////below Nav bar for student profile////// */
 .persona {
@@ -657,6 +662,7 @@ option {
   padding: 0.6rem 0.9rem;
   text-align: center;
 }
+<<<<<<< HEAD
 /* styling the first-header tag */
 .sub{
   display: flex;
@@ -710,3 +716,5 @@ option {
 .views{
   
 }
+=======
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f

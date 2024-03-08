@@ -116,7 +116,7 @@ def index():
     grades = list(db["grades"].find())  # Fetch all grades from the "grades" collection
     notes = list(db["notes"].find())  # Fetch all notes from the "notes" collection
 
-    return render_template('quizzy.html', user=user, num_questions_answered=num_questions_answered,
+    return render_template('studentdashboard.html', user=user, num_questions_answered=num_questions_answered,
                            courses=courses, exams=exams, grades=grades, notes=notes)
 
 @app.route('/admin/login', methods=['GET', 'POST'])

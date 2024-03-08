@@ -5,12 +5,224 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="../static/assets/css/styles.css" />
+
+    <link rel="stylesheet" href="../static/assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      /* Add custom styles here */
+      .allcourses {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .panel {
+        display: flex;
+        background-color: #f0f0f0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .sidebar {
+        width: 200px;
+        padding: 20px;
+        background-color: navy;
+        color: #fff;
+      }
+
+      .logobox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .logobox img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+
+      .logo {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .element {
+        margin-bottom: 10px;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+      }
+
+      .element i {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      .action a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .action a:hover {
+        color: #f00;
+      }
+      .dashboard {
+        width: 90%;
+        margin: auto;
+      }
+      .header {
+        /* align-self: center; */
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+      .brd {
+        margin: 0;
+        line-height: 1.5;
+      }
+      .crs {
+        color: #4890e9f5;
+        line-height: 3.5;
+        padding: 0.8rem;
+        border: 0.1rem solid #4890e9f5;
+        border-radius: 0.4rem;
+        transition: 0.5s;
+      }
+      .crs:hover {
+        color: white;
+        background-color: #4890e9f5;
+        transform: scaleX(1.5);
+      }
+      .mycorse {
+        width: 100%;
+      }
+      .path {
+        width: 50%;
+      }
+      .courses {
+        width: 50%;
+      }
+      .heding {
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .line {
+        color: gray;
+        width: 57%;
+        float: right;
+        margin-right: 2rem;
+        transform: translateY(-2.2rem);
+      }
+      .line2 {
+        color: gray;
+        width: 82%;
+        float: right;
+        /* margin-right: 2rem; */
+        transform: translateY(-2.2rem);
+      }
+      .journey {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 9rem;
+      }
+      .len {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .gap {
+        gap: 1rem;
+      }
+      .align {
+        align-self: center;
+      }
+      .course1 {
+        width: 90%;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+        padding-top: 0.7rem;
+        box-shadow: 0px 0px 1px 1px rgb(162, 162, 162);
+      }
+      .nehm {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .num {
+        font-size: 0.8rem;
+        margin: 0;
+        line-height: 2;
+      }
+      .resume {
+        padding: 0.5rem 0.5rem;
+        cursor: pointer;
+        color: #00163f;
+        transition: 0.5s;
+        border-radius: 0.4rem;
+        border: 0.1rem solid #4890e9f5;
+      }
+      .resume:hover {
+        color: white;
+        background-color: #4890e9;
+      }
+      .below {
+        top: 0.5rem;
+        position: relative;
+        height: 0.4rem;
+        width: 100%;
+
+        border-radius: 0.3rem;
+        box-shadow: 0px 0px 1px 1px rgb(162, 162, 162);
+      }
+      .below1 {
+        border-color: #013559;
+        background-color: #013559;
+      }
+      .below2 {
+        border-color: #009cd7;
+        background-color: #009cd7;
+      }
+      .below3 {
+        border-color: #fede23;
+        background-color: #fede23;
+      }
+      .below4 {
+        border-color: #d90018;
+        background-color: #d90018;
+      }
+      .enrol {
+        width: 100%;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        row-gap: 2rem;
+      }
+      .studying {
+        width: 40%;
+        box-shadow: 0px 0px 1px 1px rgb(162, 162, 162);
+        background-color: rgb(162, 162, 162);
+      }
+      /* .big {
+  width: 40%;
+} */
+      .descripimg {
+        width: 100%;
+        height: 8rem;
+      }
+      .lern {
+        margin: 0;
+        padding-bottom: 01rem;
+        padding-left: 0.8rem;
+      }
+    </style>
     <title>Document</title>
   </head>
   <body>
     <div class="allcourses">
       <section>
         <div class="panel">
+<<<<<<< HEAD
             <div class="sidebar">
                 <div class="logobox">
                     <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
@@ -49,9 +261,56 @@
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="action"><a href="Signout.html">Sign Out</a></span>
                 </li>
+=======
+          <div class="sidebar">
+            <div class="logobox">
+              <img
+                src="{{ url_for('static', filename='assets/favicon.png') }}"
+                alt="Quizy"
+              />
+              <span class="logo">Quizy</span>
+>>>>>>> 792c658e89091ae55b024b2f616e8c229bc0601f
             </div>
+            <li class="element">
+              <i class="fas fa-tachometer-alt"></i>
+              <span class="action"><a href="/">Dashboard</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-upload"></i>
+              <span class="action"
+                ><a href="/upload-paper">Upload question</a></span
+              >
+            </li>
+
+            <li class="element">
+              <i class="fas fa-eye"></i>
+              <span class="action"><a href="/courses">View courses</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-file-alt"></i>
+              <span class="action"><a href="/404">View Papers</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-clock"></i>
+              <span class="action"
+                ><a href="/payment-page">Subscription</a></span
+              >
+            </li>
+            <li class="element">
+              <i class="fas fa-sync-alt"></i>
+              <span class="action"><a href="/404">Renew plan</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-user"></i>
+              <span class="action"><a href="/profile">Profile</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="action"><a href="Signout.html">Sign Out</a></span>
+            </li>
+          </div>
         </div>
-    </section>
+      </section>
       <section style="width: 100%">
         <div class="dashboard">
           <div class="header flex">
@@ -138,6 +397,7 @@
               <p class="heding">COURSES</p>
               <hr class="line2" />
               <div class="enrol flex">
+                {% for course in courses %}
                 <div class="studying">
                   <div class="big">
                     <img
@@ -146,18 +406,16 @@
                       class="descripimg"
                     />
                   </div>
-                  <p class="heding lern">Learn React</p>
+                  <p class="title">{{ course.name }}</p>
+                  <p class="papers">{{ course.num_papers }} papers</p>
+                  <a
+                    href="{{ url_for('papers', course_id=course['_id']) }}"
+                    class="viewcourse"
+                  >
+                    Continue <span>&rarr;</span>
+                  </a>
                 </div>
-                <div class="studying">
-                  <div class="big">
-                    <img
-                      src="../static/assets/img/admin/image.png"
-                      alt="image"
-                      class="descripimg"
-                    />
-                  </div>
-                  <p class="heding lern">Learn React</p>
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
