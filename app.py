@@ -372,12 +372,19 @@ def courses():
  # Fetch all courses from the database
     return render_template('Courses.html', courses=courses)
 
-# @app.route('/questions/<course_id>')
-# def questions(course_id):
-#     course = db.courses.find_one({'_id': course_id})  # Fetch the selected course
-#     questions = db.questions.find({'course_id': course_id})  # Fetch questions for the selected course
-#     return render_template('papers.html', course=course, questions=questions)
-
+@app.route('/questions/<course_id>')
+def display_questions(course_id):
+    # Fetch the course details based on the course_id
+    course = db.courses.find_one({'_id': ObjectId(course_id)})
+    if course:
+        # Fetch all questions for the given course
+        questions = db.questions.find({'course_id': course_id})
+        return render_template('viewpaper.html', course=course, questions=questions)
+    else:
+        # Handle the case where the course is not found
+        flash('Course not found.', 'error')
+        return redirect(url_for('profile')) 
+    
 @app.route('/papers/<course_id>')
 def papers(course_id):
     course = get_course_details(course_id)  # Fetch the selected course

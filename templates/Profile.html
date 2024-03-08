@@ -3,155 +3,236 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assets/css/styles.css') }}"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <style>
-        /* Add custom styles here */
-        .allcourses {
-            display: flex;
-            justify-content: space-between;
-        }
+      /* Add custom styles here */
+      .allcourses {
+        display: flex;
+        justify-content: space-between;
+      }
 
-        .panel {
-            display: flex;
-            background-color: #f0f0f0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+      .panel {
+        display: flex;
+        background-color: #f0f0f0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-        .sidebar {
-            width: 200px;
-            padding: 20px;
-            background-color: navy;
-            color: #fff;
-        }
+      .sidebar {
+        width: 200px;
+        padding: 20px;
+        background-color: navy;
+        color: #fff;
+      }
 
-        .logobox {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+      .logobox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
 
-        .logobox img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
+      .logobox img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
 
-        .logo {
-            font-weight: bold;
-            font-size: 20px;
-        }
+      .logo {
+        font-weight: bold;
+        font-size: 20px;
+      }
 
-        .element {
-            margin-bottom: 10px;
-            list-style-type: none;
-            display: flex;
-            align-items: center;
-        }
+      .element {
+        margin-bottom: 10px;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+      }
 
-        .element i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
+      .element i {
+        margin-right: 10px;
+        font-size: 20px;
+      }
 
-        .action a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-        }
+      .action a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+      }
 
-        .action a:hover {
-            color: #f00;
-        }
+      .action a:hover {
+        color: #f00;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
     <div class="allcourses">
-        <section>
-            <div class="panel">
-                <div class="sidebar">
-                    <div class="logobox">
-                        <img src="{{ url_for('static', filename='assets/favicon.png') }}" alt="Quizy" />
-                        <span class="logo">Quizy</span>
-                    </div>
-                    <li class="element">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span class="action"><a href="/">Dashboard</a></span>
-                    </li>
-                    <li class="element">
-                        <i class="fas fa-upload"></i>
-                        <span class="action"><a href="/upload-paper">Upload question</a></span>
-                    </li>
-                  
-                    <li class="element">
-                        <i class="fas fa-eye"></i>
-                        <span class="action"><a href="/courses">View courses</a></span>
-                    </li>
-                    <li class="element">
-                        <i class="fas fa-file-alt"></i>
-                        <span class="action"><a href="/404">View Papers</a></span>
-                    </li>
-                    <li class="element">
-                        <i class="fas fa-clock"></i>
-                        <span class="action"><a href="/payment-page">Subscription</a></span>
-                    </li>
-                    <li class="element">
-                        <i class="fas fa-sync-alt"></i>
-                        <span class="action"><a href="/404">Renew plan</a></span>
-                    </li>
-                    <li class="element">
-                        <i class="fas fa-user"></i>
-                        <span class="action"><a href="/404">Profile</a></span>
-                    </li>
-                    <li class="element">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span class="action"><a href="/logout">Sign Out</a></span>
-                    </li>
-                </div>
-            </div>
-        </section>
       <section>
-        <h1>User Profile</h1>
-    
+        <div class="panel">
+          <div class="sidebar">
+            <div class="logobox">
+              <img
+                src="{{ url_for('static', filename='assets/favicon.png') }}"
+                alt="Quizy"
+              />
+              <span class="logo">Quizy</span>
+            </div>
+            <li class="element">
+              <i class="fas fa-tachometer-alt"></i>
+              <span class="action"><a href="/">Dashboard</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-upload"></i>
+              <span class="action"
+                ><a href="/upload-paper">Upload question</a></span
+              >
+            </li>
+
+            <li class="element">
+              <i class="fas fa-eye"></i>
+              <span class="action"><a href="/courses">View courses</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-file-alt"></i>
+              <span class="action"><a href="/404">View Papers</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-clock"></i>
+              <span class="action"
+                ><a href="/payment-page">Subscription</a></span
+              >
+            </li>
+            <li class="element">
+              <i class="fas fa-sync-alt"></i>
+              <span class="action"><a href="/404">Renew plan</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-user"></i>
+              <span class="action"><a href="/profile">Profile</a></span>
+            </li>
+            <li class="element">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="action"><a href="Signout.html">Sign Out</a></span>
+            </li>
+          </div>
+        </div>
+      </section>
+      <section class="hundred">
+        <nav class="hundred topnav">
+          <div class="leftnav">
+            <i class="fas fa-search usesearch"></i>
+            <input
+              type="search"
+              class="usersearch"
+              placeholder="Search here!..."
+            />
+          </div>
+          <div class="rightnav flex">
+              <span class="bell">10</span>
+            <i class="far fa-bell "></i>
+            <span>Yohashi</span>
+            <div class="profile-parent">
+              <img src="" alt="" class="userprofile hundred" />
+            </div>
+          </div>
+        </nav>
+        <div class="hundred persona">
+          <div class="profile-content flex">
+            <div class="user-details">
+              <div class="profile-parent main-ctn-img">
+                <img src="" alt="" class="main-img hundred" />
+              </div>
+            </div>
+            <div class="basic-info">
+                <h2 class="basic-info-head">Personal Details</h2>
+                <div class="flex user-descrip">
+                <div>
+                  <span>First Name</span><br>
+                  <input type="text" readonly placeholder="Tabe " class="read"/>
+                </div>
+                <div>
+                  <span>Last Name</span><br>
+                  <input type="text" readonly placeholder="Joel"class="read" />
+                </div>
+              </div>
+              <div class="flex user-descrip">
+                <div>
+                    <span>Department</span><br>
+                    <input type="text" readonly placeholder="Software Engineering"class="read" />
+                  </div>
+                  <div>
+                    <span>Email</span><br>
+                    <input type="text" readonly placeholder="Joeltabe@gmail.com" class="read"/>
+                  </div>
+                </div>
+                <form action="" class="flex pass-update">
+                    <div>
+                        <label for="fname">Password</label><br />
+                        <input type="text" class="read"/><br>
+                        <input type="submit" placeholder="Update" class="  profile-btn" />
+                    </div>
+                    <div>
+                    <label for="fname">Confirm Password</label><br />
+                    <input type="text" class="read"/><br>
+                </div>
+                </form>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- <h1>User Profile</h1>
+
         {% if user %}
-            <p>Welcome, {{ user.username }}!</p>
-            <p>Email: {{ user.email }}</p>
+        <p>Welcome, {{ user.username }}!</p>
+        <p>Email: {{ user.email }}</p>
         {% else %}
-            <p>Please log in to view your profile.</p>
+        <p>Please log in to view your profile.</p>
         {% endif %}
-    
+
         <h2>Statistics</h2>
-        <p>Number of questions answered: {{ num_questions_answered }}</p>
-    
-        <h2>Courses</h2>
-        <ul>
-            {% for course in courses %}
-                <li>{{ course.name }}</li>
-            {% endfor %}
-        </ul>
-    
+        <p>Number of questions answered: {{ num_questions_answered }}</p> -->
+
+        <!-- <h2>Courses</h2>
+        {% for course in courses %}
+        <div class="content">
+          <p class="title">{{ course.name }}</p>
+          <p class="papers">{{ course.num_papers }} papers</p>
+          <a
+            href="{{ url_for('display_questions', course_id=course['_id']) }}"
+            class="viewcourse"
+          >
+            Continue <span>&rarr;</span>
+          </a>
+        </div>
+        {% endfor %}
         <h2>Exams</h2>
         <ul>
-            {% for exam in exams %}
-                <li>{{ exam.name }}</li>
-            {% endfor %}
+          {% for exam in exams %}
+          <li>{{ exam.name }}</li>
+          {% endfor %}
         </ul>
-    
+
         <h2>Grades</h2>
         <ul>
-            {% for grade in grades %}
-                <li>{{ grade.grade }}</li>
-            {% endfor %}
+          {% for grade in grades %}
+          <li>{{ grade.grade }}</li>
+          {% endfor %}
         </ul>
-    
+
         <h2>Notes</h2>
         <ul>
-            {% for note in notes %}
-                <li>{{ note.title }}</li>
-            {% endfor %}
-        </ul>
+          {% for note in notes %}
+          <li>{{ note.title }}</li>
+          {% endfor %}
+        </ul> -->
       </section>
     </div>
   </body>
