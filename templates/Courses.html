@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <style>
       /* Add custom styles here */
       .allcourses {
@@ -124,30 +125,45 @@
           </div>
         </div>
       </section>
-      <section class="hundred">
-        <div class="coursetable">
-          <div class="heading">
-            <span class="tabletopics">My Courses</span>
-            <div>
-              <span>Sort By</span>
-              <span class="dropdown">&rsaquo;</span>
-            </div>
-          </div>
-          <div class="coursetablecontent">
-            {% for course in courses %}
-            <div class="content">
-              <p class="title">{{ course.name }}</p>
-              <p class="papers">{{ course.num_papers }} papers</p>
-              <a
-                href="{{ url_for('papers', course_id=course['_id']) }}"
-                class="viewcourse"
-              >
-                Continue <span>&rarr;</span>
-              </a>
-            </div>
-            {% endfor %}
-          </div>
+      <section class="my-enrolled-courses container">
+        <div class =" first-sec sub">
+          <h1 class="courses-color">Courses</h1>
+          <P class = "font-awe"> Sort By  <i class="fa fa-arrow-right" aria-hidden="true"></i></p>
         </div>
+
+        <h3 class = "subject"> Software Engineering </h3>
+        <br>
+
+        <hr>
+      
+        <ul class="enrolled flex whole">
+          {% for course in courses %}
+          <li class="block-course sqr">
+            <div class = "half">
+              <div class ="short"></div>
+            </div>
+           
+            <div class ="sec_sqr">
+
+              <a  class ="sub_name"href="{{ url_for('papers', course_id=course['_id']) }}"
+                >{{ course['name'] }}</a
+              >
+              
+              
+             
+              <button class ="views">View </button>
+              <div class ="star">
+                <i class="fa fa-star stars" aria-hidden="true"></i>
+                <i class="fa fa-star stars" aria-hidden="true"></i>
+                <i class="fa fa-star stars" aria-hidden="true"></i>
+                <i class="fa fa-star stars" aria-hidden="true"></i>
+                <i class="fa fa-star stars" aria-hidden="true"></i>
+              </div>
+            </div>
+
+          </li>
+          {% endfor %}
+        </ul>
       </section>
     </div>
   </body>

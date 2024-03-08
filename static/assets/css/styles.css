@@ -657,3 +657,56 @@ option {
   padding: 0.6rem 0.9rem;
   text-align: center;
 }
+/* styling the first-header tag */
+.sub{
+  display: flex;
+}
+.container{
+  padding: 10px 50px 10px 50px;
+}
+.font-awe{
+  float: right;
+  position: absolute;
+  right: 40px;
+  top: 30px;
+}
+.subject{
+  font-size: 28px;
+}
+/* styling the main content  */
+.whole{
+  display: flex;
+  justify-content: space-between;
+  row-gap: 3rem;
+  column-gap: 5rem;
+  flex-wrap: wrap;
+ 
+}
+.sqr{
+  border-radius: 12px;
+  background-color: white;
+  border: 1px solid grey;
+}
+/* style for the half section of the tag */
+.short{
+  background-color: darkblue;
+  width: 100%;
+  height: 60px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.stars{
+  font-size: 7px;
+  color: gold;
+}
+.sub_name{
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+.sec_sqr{
+  display: block;
+}
+.views{
+  
+}
