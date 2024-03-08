@@ -136,9 +136,14 @@
             />
           </div>
           <div class="rightnav flex">
-              <span class="bell">10</span>
-            <i class="far fa-bell "></i>
-            <span>Yohashi</span>
+            {% if user %} 
+            <i class="far fa-bell "><span class="bell">10</span></i>
+            <span>
+                
+                <p></p>
+                {% else %}
+                <p>log in </p>
+                </span>
             <div class="profile-parent">
               <img src="" alt="" class="userprofile hundred" />
             </div>
@@ -155,7 +160,7 @@
                 <h2 class="basic-info-head">Personal Details</h2>
                 <div class="flex user-descrip">
                 <div>
-                  <span>First Name</span><br>
+                  <span></span><br>
                   <input type="text" readonly placeholder="Tabe " class="read"/>
                 </div>
                 <div>
@@ -169,8 +174,8 @@
                     <input type="text" readonly placeholder="Software Engineering"class="read" />
                   </div>
                   <div>
-                    <span>Email</span><br>
-                    <input type="text" readonly placeholder="Joeltabe@gmail.com" class="read"/>
+                    <span></span><br>
+                    <input type="text" readonly placeholder="{{ user.email }}" class="read"/>
                   </div>
                 </div>
                 <form action="" class="flex pass-update">
@@ -185,17 +190,13 @@
                 </div>
                 </form>
             </div>
+            {% endif %}
             </div>
           </div>
         </div>
         <!-- <h1>User Profile</h1>
 
-        {% if user %}
-        <p>Welcome, {{ user.username }}!</p>
-        <p>Email: {{ user.email }}</p>
-        {% else %}
-        <p>Please log in to view your profile.</p>
-        {% endif %}
+        
 
         <h2>Statistics</h2>
         <p>Number of questions answered: {{ num_questions_answered }}</p> -->
