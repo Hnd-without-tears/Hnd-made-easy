@@ -7,7 +7,9 @@
   /* --secondary-color: #fac402;
   --tetiary-color: #fcb721; */
   --back-color: #f0f0f0;
+  --button-color:#00163f;
   --front-color: #a0c9ff;
+  --inactive-color: #dae7f8;
   --text-color: #fcfcfc;
 
   /* --description: 1.3rem; */
@@ -513,7 +515,7 @@ option {
   color: white;
   margin: 0 auto;
 
-  background-color: hsla(219, 100%, 12%, 0.822);
+  background-color: var(--button-color)
   border: 0.1rem solid #00163f;
 }
 .course-name:hover {
@@ -596,6 +598,18 @@ option {
 .profile-content {
   justify-content: space-evenly;
 }
+.bell{
+  color: white;
+  background-color: red;
+  font-size: x-small;
+  font-weight: 900;
+  padding: 0.1rem;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+  right: 1.3rem;
+  bottom: 0.3rem;
+}
 /* /////below Nav bar for student profile////// */
 .persona {
   margin-top: 1rem;
@@ -605,8 +619,41 @@ option {
   height: 20vh;
   background-color: var(--back-color);
 }
+.basic-info-head{
+  margin-top: 0;
+  margin-left: 2.3rem;
+}
 .basic-info {
-  width: 66%;
-  height: 20vh;
+  width: 59%;
+  padding: 2rem 0;
+  border-radius: 1rem;
   background-color: var(--back-color);
+}
+.user-descrip {
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+.read {
+  outline: none;
+  color: black;
+  font-size: 1.3rem;
+  padding: 0.6rem 0.4rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--inactive-color);
+  background-color: var(--inactive-color);
+}
+.pass-update {
+  justify-content: space-evenly;
+}
+.profile-btn {
+  font-size: 1.3rem;
+  color: white;
+  width: 10 rem;
+  background-color: var(--button-color);
+  border-radius: 1rem;
+  border: 1px solid var(--button-color);
+  margin-top: 1rem;
+  cursor: pointer;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
 }
