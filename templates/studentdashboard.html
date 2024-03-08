@@ -373,8 +373,28 @@
                       class="descripimg"
                     />
                   </div>
-                  <p class="heding lern">Html And Css</p>
+                  <p class="heding lern">Learn React</p>
                 </div>
+                {% for course in courses %}
+            <div class="studying">
+              <div class="big">
+                <img
+                  src="../static/assets/img/admin/image.png"
+                  alt="image"
+                  class="descripimg"
+                />
+              </div>
+              <p class="title">{{ course.name }}</p>
+              <p class="papers">{{ course.num_papers }} papers</p>
+              <a
+                href="{{ url_for('papers', course_id=course['_id']) }}"
+                class="viewcourse"
+              >
+                Continue <span>&rarr;</span>
+              </a>
+            </div>
+            {% endfor %}
+                
               </div>
             </div>
           </div>
